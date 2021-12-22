@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  ZYExampleObjective-C
+
+  Created by zy on 2021/12/17.
+  
+*/
+CFBundleDisplayName = "你好";

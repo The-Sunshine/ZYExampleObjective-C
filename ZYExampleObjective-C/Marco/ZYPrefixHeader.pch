@@ -1,0 +1,16 @@
+//
+//  ZYPrefixHeader.pch
+//  ZYExampleObjective-C
+//
+//  Created by zy on 2021/11/29.
+//
+
+#ifndef ZYPrefixHeader_pch
+#define ZYPrefixHeader_pch
+
+#import "ZYMacro.h"
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#endif /* ZYPrefixHeader_pch */
