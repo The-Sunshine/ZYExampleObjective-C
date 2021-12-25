@@ -45,12 +45,13 @@ target 'ZYExampleObjective-C' do
   pod 'JKCountDownButton' # 倒计时按钮
   pod 'TTTAttributedLabel'#
   pod 'ReactiveCocoa'     #
-  pod 'IGListKit'         #
-  pod 'BlocksKit'         #
+  pod 'IGListKit'         # 异步绘制
+  pod 'BlocksKit'         # block
   pod 'SAMKeychain'       #
   pod 'WRNavigationBar'   # navigationbar设置
   pod 'AXWebViewController'             # RxWebViewController
   pod 'FDFullscreenPopGesture'          # 侧滑返回
+  pod 'AFDownloadRequestOperation'      # 队列中下载多个文件
   pod 'HYBMasonryAutoCellHeight'        #
   pod 'UITableView+FDTemplateLayoutCell'# TableView高度缓存 SWTableViewCell
   # 分类 JKCategories YYCategories LSTCategory

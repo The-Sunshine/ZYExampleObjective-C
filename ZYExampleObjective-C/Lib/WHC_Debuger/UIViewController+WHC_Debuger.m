@@ -65,7 +65,7 @@
             [noteLabel.superview bringSubviewToFront:noteLabel];
         }
         if (WHC_Debuger.share.whc_CustomNote == nil) {
-            WHC_Debuger.share.whc_CustomNote = @" ";
+            WHC_Debuger.share.whc_CustomNote = @"";
         }
         noteLabel.text = [NSString stringWithFormat:@"%@%@",WHC_Debuger.share.whc_CustomNote,[NSStringFromClass(self.class) componentsSeparatedByString:@"."].lastObject];
     }

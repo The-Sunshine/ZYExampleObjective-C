@@ -47,7 +47,6 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.whc_CustomNote = @" 当前控制器：";
     }
     return self;
 }
@@ -56,18 +55,21 @@
     if (!_noteLabel) {
         CGRect noteLabelFrame;
         if ([UIScreen mainScreen].bounds.size.height >= 812) {
-            noteLabelFrame.origin = CGPointMake(105, 32);
+            noteLabelFrame.origin = CGPointMake(65, 32);
         }else {
-            noteLabelFrame.origin = CGPointMake(5, 16);
+            noteLabelFrame.origin = CGPointMake(65, 16);
         }
-        noteLabelFrame.size = CGSizeMake(CGRectGetWidth(UIScreen.mainScreen.bounds) - 105, 20);
+        noteLabelFrame.size = CGSizeMake(150, 20);
         _noteLabel = UILabel.new;
         _noteLabel.frame = noteLabelFrame;
         _noteLabel.textColor = [UIColor colorWithRed:53.0 / 255 green:205.0 / 255 blue:73.0 / 255 alpha:1.0];
         _noteLabel.adjustsFontSizeToFitWidth = YES;
         _noteLabel.minimumScaleFactor = 0.5;
         _noteLabel.font = [UIFont systemFontOfSize:14];
+        _noteLabel.textAlignment = NSTextAlignmentCenter;
         _noteLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+        _noteLabel.layer.cornerRadius = 3;
+        _noteLabel.layer.masksToBounds = true;
     }
     if (!_noteLabel.superview) {
         

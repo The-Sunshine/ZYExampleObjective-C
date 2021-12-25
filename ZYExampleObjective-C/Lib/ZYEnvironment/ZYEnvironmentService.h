@@ -51,6 +51,10 @@ static inline NSString * ZYEnvironmentServiceTypeDesc(ZYEnvironmentServiceType t
        changeEnvironmentBlock:(dispatch_block_t)changeEnvironmentBlock
               changeAfterExit:(BOOL)changeAfterExit;
 
+/// 添加其他服务配置显示
+/// @param array 自定义显示配置 不可点击
++ (void)addOtherServiceDisplayStringArray:(NSArray <NSString *>*)array;
+
 @end
 
 NS_ASSUME_NONNULL_END

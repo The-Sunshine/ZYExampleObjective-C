@@ -38,7 +38,8 @@
     [ZYEnvironmentService prepareEnvironmentLocalURLStringArray:@[@"http://baidu.com",
                                                                   @"http://souhu.com",
                                                                   @"http://asdasdasdasd.com",
-                                                                  @"http://baidu.com"]];
+                                                                  @"http://souhu.com"]];
+    [ZYEnvironmentService addOtherServiceDisplayStringArray:@[@"文件服务器http://souhu.com"]];
     ZYLog(@"%@",[ZYEnvironmentService localEnvironmentURLString]);
     
     [self testMonitor];
@@ -49,7 +50,7 @@
 
 - (void)testMonitor {
 #ifdef DEBUG
-    YYFPSLabel * fps = [[YYFPSLabel alloc] initWithFrame:CGRectMake(50, 30, 0, 0)];
+    YYFPSLabel * fps = [[YYFPSLabel alloc] initWithFrame:CGRectMake(5, 30, 0, 0)];
     [self.window addSubview:fps];
     
 #endif

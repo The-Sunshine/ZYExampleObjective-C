@@ -16,7 +16,11 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
 
 @property (assign, nonatomic) BOOL changeAfterExit;
 
-@property (strong, nonatomic) NSArray <NSString *> * urlStringArray;;
+@property (strong, nonatomic) NSMutableArray <NSString *> * urlStringArray;;
+
+@property (strong, nonatomic) NSArray <NSString *> * otherServiceArray;;
+
+@property (strong, nonatomic) UILabel * noteLabel;
 
 @end
 
@@ -36,6 +40,7 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
 #ifdef DEBUG
     [ZYEnvironmentService.shared prepareEnvironmentLocalURLStringArray:array];
     ZYEnvironmentServiceType type = [ZYEnvironmentService currentEnvironment];
+    NSAssert(array[type], @"请先配置prepareEnvironmentLocalURLStringArray");
     [ZYEnvironmentService setUserDefaultsValue:array[type] forKey:kZYEnvironmentURLString];
 #else
     [ZYEnvironmentService setUserDefaultsValue:array[array.count - 1] forKey:kZYEnvironmentURLString];
@@ -43,13 +48,20 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
 }
 
 - (void)prepareEnvironmentLocalURLStringArray:(NSArray <NSString *>*)array {
-    _urlStringArray = array;
+    NSAssert(array.count, @"请在prepareEnvironmentLocalURLStringArray配置默认url数组");
+    NSAssert(array.count <= 4, @"请在prepareEnvironmentLocalURLStringArray配置不超过4个url");
+    _urlStringArray = [NSMutableArray arrayWithArray:array];
+    while (_urlStringArray.count < 4) {
+        [_urlStringArray addObject:_urlStringArray.lastObject];
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.noteLabel.text = ZYEnvironmentServiceTypeDesc([ZYEnvironmentService currentEnvironment]);
+    });
 }
 
 #pragma mark - UserDefaults
 + (NSString *)localEnvironmentURLString {
     NSString * urlString = [ZYEnvironmentService userDefaultsValueForKey:kZYEnvironmentURLString];
-    NSAssert(urlString, @"请先配置prepareEnvironmentLocalURLStringArray");
     return urlString;
 }
 
@@ -81,7 +93,6 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
        changeEnvironmentBlock:(dispatch_block_t)changeEnvironmentBlock
               changeAfterExit:(BOOL)changeAfterExit {
 
-    if (_changeEnvironmentBlock) return;;
     _changeEnvironmentBlock = changeEnvironmentBlock;
     _changeAfterExit = changeAfterExit;
     
@@ -89,6 +100,15 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
     tapView.userInteractionEnabled = YES;
     tap.numberOfTapsRequired = 2;
     [tapView addGestureRecognizer:tap];
+}
+
+#pragma mark - 添加其他服务配置显示
++ (void)addOtherServiceDisplayStringArray:(NSArray <NSString *>*)array {
+    [ZYEnvironmentService.shared addOtherServiceDisplayStringArray:array];
+}
+
+- (void)addOtherServiceDisplayStringArray:(NSArray <NSString *>*)array {
+    self.otherServiceArray = array;
 }
 
 #pragma mark - showEnvionmentAlert
@@ -110,6 +130,12 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
             [self makeSureChangeEnvionmentAlert:[action.title substringToIndex:4]];
         }];
         [alertController addAction:action];
+    }];
+    
+    [self.otherServiceArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIAlertAction * action = [UIAlertAction actionWithTitle:obj style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:action];
+        action.enabled = false;
     }];
     
     UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -134,6 +160,7 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
     UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         
         [self saveEnvironmentType:type];
+        self.noteLabel.text = ZYEnvironmentServiceTypeDesc(type);
         [ZYEnvironmentService setUserDefaultsValue:self.urlStringArray[type] forKey:kZYEnvironmentURLString];
         
         !self.changeEnvironmentBlock ?: self.changeEnvironmentBlock();
@@ -153,8 +180,7 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
 }
 
 #pragma mark - findCurrentViewController
-/// 获取当前屏幕显示的viewcontroller
-- (UIViewController *)currentViewController {
+- (UIWindow *)currentWindow {
     
     UIWindow * window;
     if (@available(iOS 13.0, *)) {
@@ -167,7 +193,12 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
     } else {
         window = UIApplication.sharedApplication.delegate.window;
     }
-    return [self getCurrentViewControllerFrom:window.rootViewController];
+    return window;
+}
+
+/// 获取当前屏幕显示的viewcontroller
+- (UIViewController *)currentViewController {
+    return [self getCurrentViewControllerFrom:[self currentWindow].rootViewController];
 }
 
 - (UIViewController *)getCurrentViewControllerFrom:(UIViewController *)rootVC {
@@ -198,6 +229,36 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
 
 + (nullable id)userDefaultsValueForKey:(NSString *)key {
     return [NSUserDefaults.standardUserDefaults valueForKey:key];
+}
+
+#pragma mark - lazy
+- (UILabel *)noteLabel {
+    if (!_noteLabel) {
+        CGRect noteLabelFrame;
+        noteLabelFrame.size = CGSizeMake(60, 20);
+        if ([UIScreen mainScreen].bounds.size.height >= 812) {
+            noteLabelFrame.origin = CGPointMake(UIScreen.mainScreen.bounds.size.width - noteLabelFrame.size.width - 5, 32);
+        }else {
+            noteLabelFrame.origin = CGPointMake(UIScreen.mainScreen.bounds.size.width - noteLabelFrame.size.width - 5, 16);
+        }
+        _noteLabel = UILabel.new;
+        _noteLabel.frame = noteLabelFrame;
+        _noteLabel.textColor = [UIColor colorWithRed:53.0 / 255 green:205.0 / 255 blue:73.0 / 255 alpha:1.0];
+        _noteLabel.adjustsFontSizeToFitWidth = true;
+        _noteLabel.minimumScaleFactor = 0.5;
+        _noteLabel.font = [UIFont systemFontOfSize:14];
+        _noteLabel.textAlignment = NSTextAlignmentCenter;
+        _noteLabel.layer.cornerRadius = 3;
+        _noteLabel.layer.masksToBounds = true;
+        _noteLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+    }
+    if (!_noteLabel.superview) {
+        UIWindow * window = [self currentWindow];
+        if (window) {
+            [window addSubview:_noteLabel];
+        }
+    }
+    return _noteLabel;
 }
 
 @end
