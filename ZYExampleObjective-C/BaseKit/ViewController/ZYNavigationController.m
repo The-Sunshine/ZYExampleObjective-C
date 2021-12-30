@@ -48,7 +48,7 @@
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.bounds = CGRectMake(0, 0, 40, 40);
         [button setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
-//        [button setImage:[UIImage imageNamed:@"back"] forState:UIControlStateHighlighted];
+        [button setImage:[UIImage imageNamed:@"back"] forState:UIControlStateHighlighted];
         [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
 
         UIBarButtonItem * backItem = [[UIBarButtonItem alloc] initWithCustomView:button];

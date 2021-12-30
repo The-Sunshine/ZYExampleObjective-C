@@ -11,11 +11,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIDevice (ZYExtension)
 
+/// 系统版本
++ (float)systemVersion;
+
 /// 模拟器
-- (BOOL)isSimulator;
++ (BOOL)isSimulator;
 
 /// 判断iphoneX
-- (BOOL)isIphoneX;
++ (BOOL)isIphoneX;
+
+/// 判断iphone
++ (BOOL)isIphone;
+
+/// 判断ipad
++ (BOOL)isIpad;
 
 @end
 

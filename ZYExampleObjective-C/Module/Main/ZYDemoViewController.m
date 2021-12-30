@@ -8,6 +8,11 @@
 #import "ZYDemoViewController.h"
 #import "ZYEnvironmentService.h"
 
+#ifdef DEBUG
+#import "FLEX.h"
+
+#endif
+
 @implementation ZYDemoViewController
 
 - (void)viewDidLoad {
@@ -22,13 +27,18 @@
     [ZYEnvironmentService addEnvironmentTapView:bgImg changeEnvironmentBlock:^{
         
     } changeAfterExit:false];
-
+    
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    ZYDemoViewController * vc = ZYDemoViewController.new;
-    vc.title = @"第二页";
-    [self.navigationController pushViewController:vc animated:true];
+#ifdef DEBUG
+    [[FLEXManager sharedManager] showExplorer];
+
+#endif
+
+//    ZYDemoViewController * vc = ZYDemoViewController.new;
+//    vc.title = @"第二页";
+//    [self.navigationController pushViewController:vc animated:true];
 }
 
 - (void)dealloc {

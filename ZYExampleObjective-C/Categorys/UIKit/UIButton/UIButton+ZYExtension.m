@@ -49,6 +49,7 @@
     
     ButtonImageBlock block = ^(UIImage * image) {
         [self setImage:image forState:UIControlStateNormal];
+        [self setImage:image forState:UIControlStateHighlighted];
         return self;
     };
     return block;

@@ -31,11 +31,18 @@ static inline NSString * ZYEnvironmentServiceTypeDesc(ZYEnvironmentServiceType t
 }
 
 /// 环境切换设置
+/// DEBUG第一次安装默认开发环境,RELEASE固定正式环境，所有功能不生效，仅可读取环境和url
 @interface ZYEnvironmentService : NSObject
 
-/// 准备环境和url, DEBUG第一次安装默认开发环境,RELEASE固定正式环境
-/// @param array url
-+ (void)prepareEnvironmentLocalURLStringArray:(NSArray <NSString *>*)array;
+/// 准备环境和url
+/// @param develop 开发
+/// @param test 测试
+/// @param prepareRelease 预发布
+/// @param release 正式
++ (void)prepareEnvironmentLocalDevelopURLString:(NSString *)develop
+                                  testURLString:(NSString *)test
+                        prepareReleaseURLString:(NSString *)prepareRelease
+                               releaseURLString:(NSString *)release;
 
 /// 读取当前环境
 + (ZYEnvironmentServiceType)currentEnvironment;

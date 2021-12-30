@@ -18,6 +18,8 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
 
 @property (strong, nonatomic) NSMutableArray <NSString *> * urlStringArray;;
 
+@property (strong, nonatomic) NSMutableArray <NSNumber *> * typeArray;;
+
 @property (strong, nonatomic) NSArray <NSString *> * otherServiceArray;;
 
 @property (strong, nonatomic) UILabel * noteLabel;
@@ -36,27 +38,53 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
 }
 
 #pragma mark - prepare environment
-+ (void)prepareEnvironmentLocalURLStringArray:(NSArray <NSString *>*)array {
++ (void)prepareEnvironmentLocalDevelopURLString:(NSString *)develop
+                                  testURLString:(NSString *)test
+                        prepareReleaseURLString:(NSString *)prepareRelease
+                               releaseURLString:(NSString *)release {
 #ifdef DEBUG
-    [ZYEnvironmentService.shared prepareEnvironmentLocalURLStringArray:array];
-    ZYEnvironmentServiceType type = [ZYEnvironmentService currentEnvironment];
-    NSAssert(array[type], @"请先配置prepareEnvironmentLocalURLStringArray");
-    [ZYEnvironmentService setUserDefaultsValue:array[type] forKey:kZYEnvironmentURLString];
+    [ZYEnvironmentService.shared prepareEnvironmentDevelopURLString:develop
+                                                      testURLString:test
+                                            prepareReleaseURLString:prepareRelease
+                                                   releaseURLString:release];
 #else
-    [ZYEnvironmentService setUserDefaultsValue:array[array.count - 1] forKey:kZYEnvironmentURLString];
+    [ZYEnvironmentService setUserDefaultsValue:release forKey:kZYEnvironmentURLString];
 #endif
 }
 
-- (void)prepareEnvironmentLocalURLStringArray:(NSArray <NSString *>*)array {
-    NSAssert(array.count, @"请在prepareEnvironmentLocalURLStringArray配置默认url数组");
-    NSAssert(array.count <= 4, @"请在prepareEnvironmentLocalURLStringArray配置不超过4个url");
-    _urlStringArray = [NSMutableArray arrayWithArray:array];
-    while (_urlStringArray.count < 4) {
-        [_urlStringArray addObject:_urlStringArray.lastObject];
+- (void)prepareEnvironmentDevelopURLString:(NSString *)develop
+                             testURLString:(NSString *)test
+                   prepareReleaseURLString:(NSString *)prepareRelease
+                          releaseURLString:(NSString *)release {
+    self.urlStringArray = [NSMutableArray array];
+    self.typeArray = [NSMutableArray array];
+    if (develop) {
+        [self.urlStringArray addObject:develop];
+        [self.typeArray addObject:@(ZYEnvironmentServiceTypeDevelop)];
     }
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.noteLabel.text = ZYEnvironmentServiceTypeDesc([ZYEnvironmentService currentEnvironment]);
-    });
+    if (test) {
+        [self.urlStringArray addObject:test];
+        [self.typeArray addObject:@(ZYEnvironmentServiceTypeTest)];
+    }
+    if (prepareRelease) {
+        [self.urlStringArray addObject:prepareRelease];
+        [self.typeArray addObject:@(ZYEnvironmentServiceTypePrepareRelease)];
+    }
+    if (release) {
+        [self.urlStringArray addObject:release];
+        [self.typeArray addObject:@(ZYEnvironmentServiceTypeRelease)];
+    }
+
+    ZYEnvironmentServiceType type = [ZYEnvironmentService currentEnvironment];
+    /// 避免修改配置url时造成异常 如不存在当前环境url 则默认为开发环境
+    if (![self.typeArray containsObject:@(type)]) {
+        type = self.typeArray.firstObject.integerValue;
+        [self saveEnvironmentType:type];
+    }
+    NSString * url = (_urlStringArray.count <= type) ? _urlStringArray.firstObject : _urlStringArray[type];
+    [ZYEnvironmentService setUserDefaultsValue:url forKey:kZYEnvironmentURLString];
+
+    self.noteLabel.text = ZYEnvironmentServiceTypeDesc([ZYEnvironmentService currentEnvironment]);
 }
 
 #pragma mark - UserDefaults
@@ -104,7 +132,9 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
 
 #pragma mark - 添加其他服务配置显示
 + (void)addOtherServiceDisplayStringArray:(NSArray <NSString *>*)array {
+#ifdef DEBUG
     [ZYEnvironmentService.shared addOtherServiceDisplayStringArray:array];
+#endif
 }
 
 - (void)addOtherServiceDisplayStringArray:(NSArray <NSString *>*)array {
@@ -113,20 +143,19 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
 
 #pragma mark - showEnvionmentAlert
 - (void)showEnvionmentAlert {
-    NSString * currentEnvironmentString = [NSString stringWithFormat:@"当前环境:%@", ZYEnvironmentServiceTypeDesc([ZYEnvironmentService currentEnvironment])];
+    ZYEnvironmentServiceType type = [ZYEnvironmentService currentEnvironment];
+    NSString * url = [ZYEnvironmentService localEnvironmentURLString];
+    NSString * currentEnvironmentString = [NSString stringWithFormat:@"当前环境:%@-%@", ZYEnvironmentServiceTypeDesc(type),url];
+    
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:currentEnvironmentString
                                                                               message:nil
                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    NSArray * array = @[@(ZYEnvironmentServiceTypeDevelop),
-                        @(ZYEnvironmentServiceTypeTest),
-                        @(ZYEnvironmentServiceTypePrepareRelease),
-                        @(ZYEnvironmentServiceTypeRelease)];
-    
-    [array enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString * title = [NSString stringWithFormat:@"%@-%@",ZYEnvironmentServiceTypeDesc([obj integerValue]),_urlStringArray[idx]];
+    [self.typeArray enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        if (obj.integerValue == type) return;;
+
+        NSString * title = [NSString stringWithFormat:@"%@-%@",ZYEnvironmentServiceTypeDesc(obj.integerValue),_urlStringArray[idx]];
         UIAlertAction * action = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            
             [self makeSureChangeEnvionmentAlert:[action.title substringToIndex:4]];
         }];
         [alertController addAction:action];
@@ -147,7 +176,13 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
 
 - (void)makeSureChangeEnvionmentAlert:(NSString *)prefixString {
     __block ZYEnvironmentServiceType type;
-    [_urlStringArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    
+    NSArray * array = @[@(ZYEnvironmentServiceTypeDevelop),
+                         @(ZYEnvironmentServiceTypeTest),
+                         @(ZYEnvironmentServiceTypePrepareRelease),
+                         @(ZYEnvironmentServiceTypeRelease)];
+    /// 通过当前环境查找匹配枚举值
+    [array enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([ZYEnvironmentServiceTypeDesc(idx) isEqualToString:prefixString]) {
             type = idx;
         }
@@ -161,7 +196,13 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
         
         [self saveEnvironmentType:type];
         self.noteLabel.text = ZYEnvironmentServiceTypeDesc(type);
-        [ZYEnvironmentService setUserDefaultsValue:self.urlStringArray[type] forKey:kZYEnvironmentURLString];
+        
+        /// 通过存在的环境数组，查找对应的url
+        [self.typeArray enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (obj.integerValue == type) {
+                [ZYEnvironmentService setUserDefaultsValue:self.urlStringArray[idx] forKey:kZYEnvironmentURLString];
+            }
+        }];
         
         !self.changeEnvironmentBlock ?: self.changeEnvironmentBlock();
         
@@ -234,29 +275,30 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
 #pragma mark - lazy
 - (UILabel *)noteLabel {
     if (!_noteLabel) {
-        CGRect noteLabelFrame;
-        noteLabelFrame.size = CGSizeMake(60, 20);
+        CGRect frame;
+        frame.size = CGSizeMake(60, 20);
         if ([UIScreen mainScreen].bounds.size.height >= 812) {
-            noteLabelFrame.origin = CGPointMake(UIScreen.mainScreen.bounds.size.width - noteLabelFrame.size.width - 5, 32);
+            frame.origin = CGPointMake(UIScreen.mainScreen.bounds.size.width - frame.size.width - 5, 32);
         }else {
-            noteLabelFrame.origin = CGPointMake(UIScreen.mainScreen.bounds.size.width - noteLabelFrame.size.width - 5, 16);
+            frame.origin = CGPointMake(UIScreen.mainScreen.bounds.size.width - frame.size.width - 5, 16);
         }
-        _noteLabel = UILabel.new;
-        _noteLabel.frame = noteLabelFrame;
-        _noteLabel.textColor = [UIColor colorWithRed:53.0 / 255 green:205.0 / 255 blue:73.0 / 255 alpha:1.0];
-        _noteLabel.adjustsFontSizeToFitWidth = true;
-        _noteLabel.minimumScaleFactor = 0.5;
-        _noteLabel.font = [UIFont systemFontOfSize:14];
-        _noteLabel.textAlignment = NSTextAlignmentCenter;
-        _noteLabel.layer.cornerRadius = 3;
-        _noteLabel.layer.masksToBounds = true;
-        _noteLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
-    }
-    if (!_noteLabel.superview) {
-        UIWindow * window = [self currentWindow];
-        if (window) {
-            [window addSubview:_noteLabel];
-        }
+        UILabel * label = UILabel.new;
+        label.frame = frame;
+        label.textColor = [UIColor colorWithRed:53.0 / 255 green:205.0 / 255 blue:73.0 / 255 alpha:1.0];
+        label.adjustsFontSizeToFitWidth = YES;
+        label.minimumScaleFactor = 0.5;
+        label.font = [UIFont systemFontOfSize:14];
+        label.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+        label.layer.cornerRadius = 3;
+        label.layer.masksToBounds = true;
+        _noteLabel = label;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            UIWindow * window = [self currentWindow];
+            if (window) {
+                [window addSubview:label];
+            }
+        });
     }
     return _noteLabel;
 }

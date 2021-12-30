@@ -11,10 +11,13 @@
 		220A737F2770589A00CB9D81 /* UIViewController+ZYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 220A737E2770589A00CB9D81 /* UIViewController+ZYExtension.m */; };
 		220A73DD2773369000CB9D81 /* NSUserDefaults+ZYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 220A73DC2773369000CB9D81 /* NSUserDefaults+ZYExtension.m */; };
 		2213D0272754FF8C009F892F /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2213D0252754FF8B009F892F /* YYFPSLabel.m */; };
-		22443233277355E700C0539A /* UIViewController+WHC_Debuger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2244322D277355E700C0539A /* UIViewController+WHC_Debuger.m */; };
-		22443234277355E700C0539A /* WHC_Debuger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2244322E277355E700C0539A /* WHC_Debuger.m */; };
+		22443233277355E700C0539A /* UIViewController+ZYDisplayCurrentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2244322D277355E700C0539A /* UIViewController+ZYDisplayCurrentVC.m */; };
+		22443234277355E700C0539A /* ZYDisplayCurrentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2244322E277355E700C0539A /* ZYDisplayCurrentVC.m */; };
 		22443235277355E700C0539A /* UIView+WHC_Debuger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2244322F277355E700C0539A /* UIView+WHC_Debuger.m */; };
 		22443239277358AC00C0539A /* UIWindow+ZYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 22443237277358AB00C0539A /* UIWindow+ZYExtension.m */; };
+		224F44D727788FE500F36F3D /* ZYNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224F44D627788FE500F36F3D /* ZYNewsViewController.m */; };
+		224F44E12779943900F36F3D /* ZYMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224F44E02779943900F36F3D /* ZYMineViewController.m */; };
+		224F44F2277D8BF500F36F3D /* ZYBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 224F44F1277D8BF500F36F3D /* ZYBaseTableViewCell.m */; };
 		2276AE362754AF2C002ADDDC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2276AE352754AF2C002ADDDC /* AppDelegate.m */; };
 		2276AE392754AF2C002ADDDC /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2276AE382754AF2C002ADDDC /* SceneDelegate.m */; };
 		2276AE412754AF2D002ADDDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2276AE402754AF2D002ADDDC /* Assets.xcassets */; };
@@ -81,14 +84,20 @@
 		2213D0242754E698009F892F /* ZYVender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYVender.h; sourceTree = "<group>"; };
 		2213D0252754FF8B009F892F /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		2213D0262754FF8C009F892F /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
-		2244322D277355E700C0539A /* UIViewController+WHC_Debuger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WHC_Debuger.m"; sourceTree = "<group>"; };
-		2244322E277355E700C0539A /* WHC_Debuger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_Debuger.m; sourceTree = "<group>"; };
+		2244322D277355E700C0539A /* UIViewController+ZYDisplayCurrentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZYDisplayCurrentVC.m"; sourceTree = "<group>"; };
+		2244322E277355E700C0539A /* ZYDisplayCurrentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYDisplayCurrentVC.m; sourceTree = "<group>"; };
 		2244322F277355E700C0539A /* UIView+WHC_Debuger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WHC_Debuger.m"; sourceTree = "<group>"; };
-		22443230277355E700C0539A /* UIViewController+WHC_Debuger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WHC_Debuger.h"; sourceTree = "<group>"; };
-		22443231277355E700C0539A /* WHC_Debuger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_Debuger.h; sourceTree = "<group>"; };
+		22443230277355E700C0539A /* UIViewController+ZYDisplayCurrentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZYDisplayCurrentVC.h"; sourceTree = "<group>"; };
+		22443231277355E700C0539A /* ZYDisplayCurrentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYDisplayCurrentVC.h; sourceTree = "<group>"; };
 		22443232277355E700C0539A /* UIView+WHC_Debuger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WHC_Debuger.h"; sourceTree = "<group>"; };
 		22443237277358AB00C0539A /* UIWindow+ZYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+ZYExtension.m"; sourceTree = "<group>"; };
 		22443238277358AB00C0539A /* UIWindow+ZYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+ZYExtension.h"; sourceTree = "<group>"; };
+		224F44D527788FE500F36F3D /* ZYNewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYNewsViewController.h; sourceTree = "<group>"; };
+		224F44D627788FE500F36F3D /* ZYNewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYNewsViewController.m; sourceTree = "<group>"; };
+		224F44DF2779943900F36F3D /* ZYMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYMineViewController.h; sourceTree = "<group>"; };
+		224F44E02779943900F36F3D /* ZYMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYMineViewController.m; sourceTree = "<group>"; };
+		224F44F0277D8BF500F36F3D /* ZYBaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYBaseTableViewCell.h; sourceTree = "<group>"; };
+		224F44F1277D8BF500F36F3D /* ZYBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYBaseTableViewCell.m; sourceTree = "<group>"; };
 		2276AE312754AF2C002ADDDC /* ZYExampleObjective-C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ZYExampleObjective-C.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2276AE342754AF2C002ADDDC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2276AE352754AF2C002ADDDC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -257,6 +266,8 @@
 		2244322B277354E200C0539A /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				224F44DD277993DB00F36F3D /* PushService */,
+				224F44DC277993D200F36F3D /* IMService */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -266,10 +277,6 @@
 			children = (
 				22443232277355E700C0539A /* UIView+WHC_Debuger.h */,
 				2244322F277355E700C0539A /* UIView+WHC_Debuger.m */,
-				22443230277355E700C0539A /* UIViewController+WHC_Debuger.h */,
-				2244322D277355E700C0539A /* UIViewController+WHC_Debuger.m */,
-				22443231277355E700C0539A /* WHC_Debuger.h */,
-				2244322E277355E700C0539A /* WHC_Debuger.m */,
 			);
 			path = WHC_Debuger;
 			sourceTree = "<group>";
@@ -281,6 +288,113 @@
 				22443237277358AB00C0539A /* UIWindow+ZYExtension.m */,
 			);
 			path = UIWindow;
+			sourceTree = "<group>";
+		};
+		224F44D827788FEA00F36F3D /* News */ = {
+			isa = PBXGroup;
+			children = (
+				224F44D527788FE500F36F3D /* ZYNewsViewController.h */,
+				224F44D627788FE500F36F3D /* ZYNewsViewController.m */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		224F44DC277993D200F36F3D /* IMService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = IMService;
+			sourceTree = "<group>";
+		};
+		224F44DD277993DB00F36F3D /* PushService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PushService;
+			sourceTree = "<group>";
+		};
+		224F44DE2779941900F36F3D /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				224F44DF2779943900F36F3D /* ZYMineViewController.h */,
+				224F44E02779943900F36F3D /* ZYMineViewController.m */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		224F44E2277AFC9800F36F3D /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				2276AE342754AF2C002ADDDC /* AppDelegate.h */,
+				2276AE352754AF2C002ADDDC /* AppDelegate.m */,
+				2276AE372754AF2C002ADDDC /* SceneDelegate.h */,
+				2276AE382754AF2C002ADDDC /* SceneDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		224F44E7277C375F00F36F3D /* ZYDisplayCurrentVC */ = {
+			isa = PBXGroup;
+			children = (
+				22443230277355E700C0539A /* UIViewController+ZYDisplayCurrentVC.h */,
+				2244322D277355E700C0539A /* UIViewController+ZYDisplayCurrentVC.m */,
+				22443231277355E700C0539A /* ZYDisplayCurrentVC.h */,
+				2244322E277355E700C0539A /* ZYDisplayCurrentVC.m */,
+			);
+			path = ZYDisplayCurrentVC;
+			sourceTree = "<group>";
+		};
+		224F44E8277C415600F36F3D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2276AE7D2754B0D0002ADDDC /* ZYBaseViewModel.h */,
+				2276AE7E2754B0D0002ADDDC /* ZYBaseViewModel.m */,
+				2276AE8C2754B17D002ADDDC /* ZYBaseTableViewModel.h */,
+				2276AE8D2754B17D002ADDDC /* ZYBaseTableViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		224F44E9277C415F00F36F3D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2276AEA52754D8C0002ADDDC /* ZYBaseTableVC.h */,
+				2276AEA62754D8C0002ADDDC /* ZYBaseTableVC.m */,
+				2276AE6A2754AF96002ADDDC /* ZYBaseViewController.h */,
+				2276AE6B2754AF96002ADDDC /* ZYBaseViewController.m */,
+				2276AE702754B02E002ADDDC /* ZYNavigationController.h */,
+				2276AE712754B02E002ADDDC /* ZYNavigationController.m */,
+				2276AE6D2754B019002ADDDC /* ZYTabbarViewController.h */,
+				2276AE6E2754B019002ADDDC /* ZYTabbarViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		224F44EA277C417D00F36F3D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2276AE772754B0AB002ADDDC /* ZYBaseView.h */,
+				2276AE782754B0AB002ADDDC /* ZYBaseView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		224F44EB277C418400F36F3D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2276AE7A2754B0B9002ADDDC /* ZYBaseModel.h */,
+				2276AE7B2754B0B9002ADDDC /* ZYBaseModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		224F44EF277D8BDA00F36F3D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				224F44F0277D8BF500F36F3D /* ZYBaseTableViewCell.h */,
+				224F44F1277D8BF500F36F3D /* ZYBaseTableViewCell.m */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		2276AE282754AF2C002ADDDC = {
@@ -308,10 +422,7 @@
 		2276AE332754AF2C002ADDDC /* ZYExampleObjective-C */ = {
 			isa = PBXGroup;
 			children = (
-				2276AE342754AF2C002ADDDC /* AppDelegate.h */,
-				2276AE352754AF2C002ADDDC /* AppDelegate.m */,
-				2276AE372754AF2C002ADDDC /* SceneDelegate.h */,
-				2276AE382754AF2C002ADDDC /* SceneDelegate.m */,
+				224F44E2277AFC9800F36F3D /* AppDelegate */,
 				2276AE732754B034002ADDDC /* BaseKit */,
 				22437BBF275DD2200023E7C1 /* Categorys */,
 				2276AE942754B1D1002ADDDC /* Lib */,
@@ -343,22 +454,11 @@
 		2276AE732754B034002ADDDC /* BaseKit */ = {
 			isa = PBXGroup;
 			children = (
-				2276AE6A2754AF96002ADDDC /* ZYBaseViewController.h */,
-				2276AE6B2754AF96002ADDDC /* ZYBaseViewController.m */,
-				2276AE6D2754B019002ADDDC /* ZYTabbarViewController.h */,
-				2276AE6E2754B019002ADDDC /* ZYTabbarViewController.m */,
-				2276AE702754B02E002ADDDC /* ZYNavigationController.h */,
-				2276AE712754B02E002ADDDC /* ZYNavigationController.m */,
-				2276AE772754B0AB002ADDDC /* ZYBaseView.h */,
-				2276AE782754B0AB002ADDDC /* ZYBaseView.m */,
-				2276AE7A2754B0B9002ADDDC /* ZYBaseModel.h */,
-				2276AE7B2754B0B9002ADDDC /* ZYBaseModel.m */,
-				2276AE7D2754B0D0002ADDDC /* ZYBaseViewModel.h */,
-				2276AE7E2754B0D0002ADDDC /* ZYBaseViewModel.m */,
-				2276AE8C2754B17D002ADDDC /* ZYBaseTableViewModel.h */,
-				2276AE8D2754B17D002ADDDC /* ZYBaseTableViewModel.m */,
-				2276AEA52754D8C0002ADDDC /* ZYBaseTableVC.h */,
-				2276AEA62754D8C0002ADDDC /* ZYBaseTableVC.m */,
+				224F44EF277D8BDA00F36F3D /* Cell */,
+				224F44EB277C418400F36F3D /* Model */,
+				224F44EA277C417D00F36F3D /* View */,
+				224F44E9277C415F00F36F3D /* ViewController */,
+				224F44E8277C415600F36F3D /* ViewModel */,
 			);
 			path = BaseKit;
 			sourceTree = "<group>";
@@ -379,12 +479,13 @@
 		2276AE942754B1D1002ADDDC /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				2244322C277355E700C0539A /* WHC_Debuger */,
-				22D71BBA276CC2C900515804 /* ZYEnvironment */,
 				22CFC4A727620641008AF986 /* SZKCleanCache */,
+				2244322C277355E700C0539A /* WHC_Debuger */,
 				22CFC3E92760AFEA008AF986 /* WHGradientHelper */,
-				22F3F16F2758EC9D00097DFB /* ZYButton */,
 				2213D0282754FF90009F892F /* YYFPSLabel */,
+				22F3F16F2758EC9D00097DFB /* ZYButton */,
+				224F44E7277C375F00F36F3D /* ZYDisplayCurrentVC */,
+				22D71BBA276CC2C900515804 /* ZYEnvironmentService */,
 				2276AE9A2754D5AD002ADDDC /* ZYRefresh */,
 			);
 			path = Lib;
@@ -394,8 +495,8 @@
 			isa = PBXGroup;
 			children = (
 				2276AE972754B2B3002ADDDC /* Main */,
-				2276AE992754B2D0002ADDDC /* News */,
-				2276AE982754B2C1002ADDDC /* Mine */,
+				224F44D827788FEA00F36F3D /* News */,
+				224F44DE2779941900F36F3D /* Mine */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -428,20 +529,6 @@
 				2276AE902754B197002ADDDC /* ZYDemoTableViewModel.m */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		2276AE982754B2C1002ADDDC /* Mine */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Mine;
-			sourceTree = "<group>";
-		};
-		2276AE992754B2D0002ADDDC /* News */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = News;
 			sourceTree = "<group>";
 		};
 		2276AE9A2754D5AD002ADDDC /* ZYRefresh */ = {
@@ -509,13 +596,13 @@
 			path = UIBarButtonItem;
 			sourceTree = "<group>";
 		};
-		22D71BBA276CC2C900515804 /* ZYEnvironment */ = {
+		22D71BBA276CC2C900515804 /* ZYEnvironmentService */ = {
 			isa = PBXGroup;
 			children = (
 				22C40724276E032900FC2F9C /* ZYEnvironmentService.h */,
 				22C40725276E032900FC2F9C /* ZYEnvironmentService.m */,
 			);
-			path = ZYEnvironment;
+			path = ZYEnvironmentService;
 			sourceTree = "<group>";
 		};
 		22F3F16F2758EC9D00097DFB /* ZYButton */ = {
@@ -722,6 +809,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22F3F1722758EC9D00097DFB /* ZYButton.m in Sources */,
+				224F44F2277D8BF500F36F3D /* ZYBaseTableViewCell.m in Sources */,
 				2276AE762754B082002ADDDC /* ZYDemoViewController.m in Sources */,
 				2276AE362754AF2C002ADDDC /* AppDelegate.m in Sources */,
 				2276AEA02754D619002ADDDC /* ZYRefreshFooter.m in Sources */,
@@ -729,7 +817,7 @@
 				2276AE7F2754B0D0002ADDDC /* ZYBaseViewModel.m in Sources */,
 				22443239277358AC00C0539A /* UIWindow+ZYExtension.m in Sources */,
 				22C40726276E032900FC2F9C /* ZYEnvironmentService.m in Sources */,
-				22443234277355E700C0539A /* WHC_Debuger.m in Sources */,
+				22443234277355E700C0539A /* ZYDisplayCurrentVC.m in Sources */,
 				2276AE6C2754AF96002ADDDC /* ZYBaseViewController.m in Sources */,
 				2213D0272754FF8C009F892F /* YYFPSLabel.m in Sources */,
 				2276AE882754B117002ADDDC /* ZYDemoViewModel.m in Sources */,
@@ -740,9 +828,10 @@
 				220A73DD2773369000CB9D81 /* NSUserDefaults+ZYExtension.m in Sources */,
 				220A737F2770589A00CB9D81 /* UIViewController+ZYExtension.m in Sources */,
 				22CFC4BE2768735C008AF986 /* UIBarButtonItem+ZYExtension.m in Sources */,
+				224F44D727788FE500F36F3D /* ZYNewsViewController.m in Sources */,
 				2276AE722754B02E002ADDDC /* ZYNavigationController.m in Sources */,
 				2276AE8E2754B17D002ADDDC /* ZYBaseTableViewModel.m in Sources */,
-				22443233277355E700C0539A /* UIViewController+WHC_Debuger.m in Sources */,
+				22443233277355E700C0539A /* UIViewController+ZYDisplayCurrentVC.m in Sources */,
 				2276AEA32754D6CD002ADDDC /* ZYConst.m in Sources */,
 				2276AE822754B0EA002ADDDC /* ZYDemoModel.m in Sources */,
 				22443235277355E700C0539A /* UIView+WHC_Debuger.m in Sources */,
@@ -752,6 +841,7 @@
 				2276AE472754AF2D002ADDDC /* main.m in Sources */,
 				22CFC4A62762063A008AF986 /* SZKCleanCache.m in Sources */,
 				22CFC4BA27686858008AF986 /* UIView+ZYExtension.m in Sources */,
+				224F44E12779943900F36F3D /* ZYMineViewController.m in Sources */,
 				22CFC3EC2760AFEA008AF986 /* WHGradientHelper.m in Sources */,
 				22CFC4AD27677E72008AF986 /* UIButton+ZYExtension.m in Sources */,
 				2276AE392754AF2C002ADDDC /* SceneDelegate.m in Sources */,

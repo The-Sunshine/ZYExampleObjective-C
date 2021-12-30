@@ -17,34 +17,52 @@
 #define SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
 #define SCREENH_HEIGHT [UIScreen mainScreen].bounds.size.height
 
-#define SystemVersionValue [UIDevice currentDevice].systemVersion.floatValue
-
-#define RGBCOLOR(r,g,b)  [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
-#define RGBACOLOR(r,g,b,a)  [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)/255.0f]
-#define HexColor(hexValue) [UIColor colorWithRed:((float)(((hexValue) & 0xFF0000) >> 16))/255.0 green:((float)(((hexValue) & 0xFF00) >> 8))/255.0 blue:((float)((hexValue) & 0xFF))/255.0 alpha:1.0]
-
 #ifdef DEBUG
 #define ZYLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
 #else
 #define ZYLog(...)
 #endif
 
-//GCD - 一次性执行
-#define kDISPATCH_ONCE_BLOCK(onceBlock) static dispatch_once_t onceToken; dispatch_once(&onceToken, onceBlock);
-//GCD - 在Main线程上运行
-#define kDISPATCH_MAIN_THREAD(mainQueueBlock) dispatch_async(dispatch_get_main_queue(), mainQueueBlock);
-//GCD - 开启异步线程
-#define kDISPATCH_GLOBAL_QUEUE_DEFAULT(globalQueueBlock) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), globalQueueBlocl);
+/// 检查null nil
+static inline BOOL ZYCheckNull(NSString * string) {
+    return [string isEqual:[NSNull null]] ||
+    (string == nil ? @"" : [NSString stringWithFormat:@"%@", string]);
+}
+
+// GCD - 一次性执行
+static inline void ZYDispatch_once_block(DISPATCH_NOESCAPE dispatch_block_t block) {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, block);
+}
+
+// GCD - 在Main线程上运行
+static inline void ZYDispatch_main_block(DISPATCH_NOESCAPE dispatch_block_t block) {
+    dispatch_async(dispatch_get_main_queue(), block);
+}
+
+// GCD - 开启异步线程
+static inline void ZYDispatch_global_block(DISPATCH_NOESCAPE dispatch_block_t block) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block);
+}
 
 /// PingFangSC-Regular字体
 static inline UIFont * ZYPingFangSCRegularSize(float size) {
     return [UIFont fontWithName:@"PingFangSC-Regular" size:size];
 }
 
-/// imageNamed快速读取
-static inline UIImage * ZYImageNamed(NSString * imageName) {
-    return [UIImage imageNamed:imageName];
+/// rgbColor
+static inline UIColor * rgbColor(float red,float green,float blue) {
+    return [UIColor colorWithRed:(red)/255.0f green:(green)/255.0f blue:(blue)/255.0f alpha:1];
 }
 
+/// rgbaColor
+static inline UIColor * rgbaColor(float red,float green,float blue,float alpha) {
+    return [UIColor colorWithRed:(red)/255.0f green:(green)/255.0f blue:(blue)/255.0f alpha:alpha];
+}
+
+/// hexColor
+static inline UIColor * hexColor(NSUInteger hexValue) {
+    return [UIColor colorWithRed:((float)(((hexValue) & 0xFF0000) >> 16))/255.0 green:((float)(((hexValue) & 0xFF00) >> 8))/255.0 blue:((float)((hexValue) & 0xFF))/255.0 alpha:1.0];
+}
 
 #endif /* ZYMacro_h */

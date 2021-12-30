@@ -7,7 +7,11 @@
 
 #import "ZYTabbarViewController.h"
 #import "ZYNavigationController.h"
+
+/// 业务
 #import "ZYDemoViewController.h"
+#import "ZYNewsViewController.h"
+#import "ZYMineViewController.h"
 
 @interface ZYTabbarViewController ()<UITabBarControllerDelegate>
 
@@ -42,10 +46,10 @@
 - (void)addChildViewControllers {
     
     [self addTabbarVC:ZYDemoViewController.new title:@"基础" imageName:@"main_portal_message"];
-    [self addTabbarVC:ZYDemoViewController.new title:@"预演" imageName:@"main_portal_message"];
+    [self addTabbarVC:ZYNewsViewController.new title:@"预演" imageName:@"main_portal_message"];
     [self addTabbarVC:ZYDemoViewController.new title:@"实例" imageName:@"main_portal_message"];
     [self addTabbarVC:ZYDemoViewController.new title:@"分享" imageName:@"main_portal_message"];
-    [self addTabbarVC:ZYDemoViewController.new title:@"更多" imageName:@"main_portal_message"];
+    [self addTabbarVC:ZYMineViewController.new title:@"更多" imageName:@"main_portal_message"];
 }
 
 - (void)addTabbarVC:(UIViewController *)vc title:(NSString *)title imageName:(NSString *)imageName {

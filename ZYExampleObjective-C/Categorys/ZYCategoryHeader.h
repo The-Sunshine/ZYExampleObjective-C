@@ -8,6 +8,11 @@
 #ifndef ZYCategoryHeader_h
 #define ZYCategoryHeader_h
 
+/// imageNamed快速读取
+static inline UIImage * ZYImageNamed(NSString * imageName) {
+    return [UIImage imageNamed:imageName];
+}
+
 /// UIKit
 #import "UIButton+ZYExtension.h"
 #import "UIBarButtonItem+ZYExtension.h"

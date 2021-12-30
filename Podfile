@@ -7,6 +7,20 @@ target 'ZYExampleObjective-C' do
   inhibit_all_warnings!
   # Pods for ZYExampleObjective-C
 
+#  工具
+#  https://github.com/netyouli/WHC_DataModelFactory json转模型开发辅助工具
+#  https://github.com/tinymind/LSUnusedResources 无用资源检测
+#  https://github.com/wuba/WBBlades/blob/master/README_CN.md 基于Mach-O文件解析的工具集，包括无用代码检测（支持OC和Swift）、包大小分析、无符号表日志符号化。
+#  https://github.com/EchoZuo/ECPrivacyCheckTools 系统隐私权限检测工具
+#  https://blog.csdn.net/u014616159/article/details/81016061 修改项目名
+
+#  混淆
+#  https://github.com/juguangtool/iOSConfusion 混淆过审免费
+#  https://github.com/520coding/confuse 混淆过审免费
+#  https://github.com/chenxiancai/STCObfuscator 混淆免费
+#  https://github.com/2621532542/iOS_NQConfuseTool 混淆免费
+#  https://github.com/netyouli/WHC_ConfuseSoftware 过审混淆工具收费
+
 # Debug检测
   pod 'MLeaksFinder', :configurations => ['Debug'] # 内存泄漏
   pod 'FLEX', :configurations => ['Debug']
@@ -61,19 +75,13 @@ target 'ZYExampleObjective-C' do
   
 
   
-  
-  
-#  learn
-#  https://github.com/wuba/WBBlades/blob/master/README_CN.md 基于Mach-O文件解析的工具集，包括无用代码检测（支持OC和Swift）、包大小分析、无符号表日志符号化。
-# https://github.com/tinymind/LSUnusedResources 无用资源检测
+  #  learn
 #  HSUpdateApp XHVersion Version 更新
-#  https://github.com/EchoZuo/ECPrivacyCheckTools 系统隐私权限检测工具
 #  https://github.com/MQCCoder/XYIAPKit 内购
 #  https://github.com/wangziwu/TimLiu-iOS iOS开发常用三方库、插件、知名博客等等
-#  https://github.com/wangziwu/Swift wift基础知识大全,🚀Swift学习从简单到复杂
-#  https://github.com/SmileZXLee/ZXHookDetection hook及越狱的基本防护与检测(动态库注入检测、hook检测与防护、越狱检测、签名校验、IDA反编译分析加密协议Demo)；【数据传输安全】浅谈http、https与数据加密
+#  https://github.com/wangziwu/Swift swift基础知识大全,🚀Swift学习从简单到复杂
 #  https://github.com/wujunyang/MVVMReactiveCocoaDemo ReactiveCocoa的知识点及MVVM模式运用
-#  https://blog.csdn.net/u014616159/article/details/81016061 修改项目名
+#  https://github.com/SmileZXLee/ZXHookDetection hook及越狱的基本防护与检测(动态库注入检测、hook检测与防护、越狱检测、签名校验、IDA反编译分析加密协议Demo)；【数据传输安全】浅谈http、https与数据加密
 
 
   # MVVMReactiveCocoa

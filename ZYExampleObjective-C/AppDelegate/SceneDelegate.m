@@ -14,7 +14,6 @@
 #ifdef DEBUG
 #import "YYFPSLabel.h"
 #import "MLeaksFinder.h"
-#import "FLEX.h"
 
 
 #endif
@@ -33,26 +32,27 @@
     self.window.rootViewController = ZYTabbarViewController.new;
     [self.window makeKeyAndVisible];
 
-    [IQKeyboardManager sharedManager].enable = YES;
-
-    [ZYEnvironmentService prepareEnvironmentLocalURLStringArray:@[@"http://baidu.com",
-                                                                  @"http://souhu.com",
-                                                                  @"http://asdasdasdasd.com",
-                                                                  @"http://souhu.com"]];
-    [ZYEnvironmentService addOtherServiceDisplayStringArray:@[@"文件服务器http://souhu.com"]];
-    ZYLog(@"%@",[ZYEnvironmentService localEnvironmentURLString]);
-    
-    [self testMonitor];
+    [self debugMonitor];
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 }
 
-- (void)testMonitor {
+- (void)debugMonitor {
+    [IQKeyboardManager sharedManager].enable = YES;
+
+    [ZYEnvironmentService prepareEnvironmentLocalDevelopURLString:@"http://baidu.com"
+                                                    testURLString:@"http://test.com"
+                                          prepareReleaseURLString:@"http://prepare.com"
+                                                 releaseURLString:@"http://release.com"];
+    [ZYEnvironmentService addOtherServiceDisplayStringArray:@[@"文件服务器http://souhu.com"]];
+    ZYLog(@"%@",[ZYEnvironmentService localEnvironmentURLString]);
+
 #ifdef DEBUG
     YYFPSLabel * fps = [[YYFPSLabel alloc] initWithFrame:CGRectMake(5, 30, 0, 0)];
     [self.window addSubview:fps];
     
+
 #endif
 }
 

@@ -9,6 +9,7 @@
 #define ZYVender_h
 
 
+#import "ZYCategoryHeader.h"
 
 /// Lib
 #import "WHGradientHelper.h"
@@ -21,7 +22,6 @@
 /// 第三方
 #import <Masonry.h>
 #import <UINavigationController+FDFullscreenPopGesture.h>
-#import "ZYCategoryHeader.h"
 #import <YYKit/YYKit.h>
 
 

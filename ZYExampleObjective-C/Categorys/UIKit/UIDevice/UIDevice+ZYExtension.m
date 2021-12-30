@@ -9,14 +9,28 @@
 
 @implementation UIDevice (ZYExtension)
 
-- (BOOL)isSimulator {
+
++ (float)systemVersion {
+    return UIDevice.currentDevice.systemVersion.floatValue;
+}
+
++ (BOOL)isSimulator {
     return (TARGET_IPHONE_SIMULATOR == 1 &&
             TARGET_OS_IPHONE == 1);
 }
 
-- (BOOL)isIphoneX {
++ (BOOL)isIphoneX {
     return ([UIScreen mainScreen].bounds.size.width >= 375.0f &&
             [UIScreen mainScreen].bounds.size.height >= 812.0f);
 }
+
++ (BOOL)isIphone {
+    return (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone);
+}
+
++ (BOOL)isIpad {
+    return (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad);
+}
+
 
 @end

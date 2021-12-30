@@ -17,36 +17,40 @@ whiteView.layer.masksToBounds = true;
 whiteView.backgroundColor = UIColor.whiteColor;
 [whiteView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.left.right.bottom.offset(0);
-    make.top.offset(34);
+    make.top.offset(0);
+    make.center.equalTo(self.view).offset(0);
 }];
+ 
 */
 
 /// UIImageView
 /*
 UIImageView * imageBGView = UIImageView.new;
 [self addSubview:imageBGView];
-imageBGView.cornerRadius = 62.5 / 2;
+imageBGView.cornerRadius = 5;
 imageBGView.layer.masksToBounds = true;
 imageBGView.backgroundColor = UIColor.whiteColor;
 [imageBGView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.width.height.offset(62.5);
+    make.left.right.bottom.offset(0);
     make.top.offset(0);
-    make.centerX.equalTo(self);
-}];
+    make.center.equalTo(self.view).offset(0);
+ }];
  */
 
 /// UILabel
 /*
 UILabel * titleLabel = UILabel.new;
 [whiteView addSubview:titleLabel];
-titleLabel.text = @"清除缓存4MB";
+titleLabel.text = @"";
 titleLabel.textAlignment = NSTextAlignmentCenter;
-titleLabel.textColor = RGBCOLOR(156, 156, 156);
-titleLabel.font = PingFangSCRegularSize(19.5);
+titleLabel.textColor = UIColor.redColor;
+titleLabel.font = PingFangSCRegularSize(14);;
 [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.offset(37);
-    make.left.right.offset(0);
-}];
+    make.left.right.bottom.offset(0);
+    make.top.offset(0);
+    make.center.equalTo(self.view).offset(0);
+ 
+ }];
 */
 
 /// UIButton
@@ -58,11 +62,11 @@ UIButton * sureButton = UIButton.new;
 sureButton.cornerRadius = 5;
 sureButton.layer.masksToBounds = true;
 sureButton.titleLabel.font = PingFangSCRegularSize(14);
-sureButton.backgroundColor = RGBCOLOR(85, 85, 85);
+sureButton.backgroundColor = UIColor.redColor;
 [sureButton mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(contentLabel.mas_bottom).offset(14);
-    make.left.right.equalTo(contentLabel);
-    make.height.offset(34);
+    make.left.right.bottom.offset(0);
+    make.top.offset(0);
+    make.center.equalTo(self.view).offset(0);
 }];
 */
 
@@ -74,6 +78,7 @@ sureButton.backgroundColor = RGBCOLOR(85, 85, 85);
     if (!_deleteButton) {
         _deleteButton = UIButton.new;
         [self.view addSubview:_deleteButton];
+        [_deleteButton addTarget:self action:@selector(sureClilck) forControlEvents:UIControlEventTouchUpInside];
         [_deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
         }];
     }
