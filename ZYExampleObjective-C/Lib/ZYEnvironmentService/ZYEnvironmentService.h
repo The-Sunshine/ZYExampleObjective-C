@@ -48,7 +48,7 @@ static inline NSString * ZYEnvironmentServiceTypeDesc(ZYEnvironmentServiceType t
 + (ZYEnvironmentServiceType)currentEnvironment;
 
 /// 读取当前环境的url
-+ (NSString *)localEnvironmentURLString;
++ (NSString *)currentEnvironmentURLString;
 
 /// 添加环境切换双击手势 仅在DEBUG环境打开
 /// @param tapView 可点击控件

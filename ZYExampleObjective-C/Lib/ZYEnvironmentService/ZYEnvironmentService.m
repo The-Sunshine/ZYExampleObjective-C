@@ -88,7 +88,7 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
 }
 
 #pragma mark - UserDefaults
-+ (NSString *)localEnvironmentURLString {
++ (NSString *)currentEnvironmentURLString {
     NSString * urlString = [ZYEnvironmentService userDefaultsValueForKey:kZYEnvironmentURLString];
     return urlString;
 }
@@ -144,7 +144,7 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
 #pragma mark - showEnvionmentAlert
 - (void)showEnvionmentAlert {
     ZYEnvironmentServiceType type = [ZYEnvironmentService currentEnvironment];
-    NSString * url = [ZYEnvironmentService localEnvironmentURLString];
+    NSString * url = [ZYEnvironmentService currentEnvironmentURLString];
     NSString * currentEnvironmentString = [NSString stringWithFormat:@"当前环境:%@-%@", ZYEnvironmentServiceTypeDesc(type),url];
     
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:currentEnvironmentString
