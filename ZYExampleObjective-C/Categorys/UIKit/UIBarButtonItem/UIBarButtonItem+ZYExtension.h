@@ -17,10 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param selectedImage UIImage
 /// @param target id
 /// @param action SEL
-+ (UIBarButtonItem *)barButtonItemWithImage:(UIImage *)image
-                              selectedImage:(UIImage *)selectedImage
-                                     target:(id)target
-                                     action:(SEL)action;
++ (UIBarButtonItem *)zy_barButtonItemWithImage:(UIImage *)image
+                                 selectedImage:(UIImage *)selectedImage
+                                        target:(id)target
+                                        action:(SEL)action;
 
 /// UIBarButtonItem Title
 /// @param title NSString
@@ -28,11 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param titleFont UIFont
 /// @param target id
 /// @param action SEL
-+ (UIBarButtonItem *)barButtonItemWithTitle:(NSString *)title
-                                 titleColor:(UIColor *)titleColor
-                                  titleFont:(UIFont *)titleFont
-                                     target:(id)target
-                                     action:(SEL)action;
++ (UIBarButtonItem *)zy_barButtonItemWithTitle:(NSString *)title
+                                    titleColor:(UIColor *)titleColor
+                                     titleFont:(UIFont *)titleFont
+                                        target:(id)target
+                                        action:(SEL)action;
 
 @end
 

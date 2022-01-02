@@ -9,45 +9,45 @@
 
 @implementation UIButton (ZYExtension)
 
-- (ButtonTitleBlock)setTitleStateNormal {
+- (ZYButtonTitleBlock)setTitleStateNormal {
     
-    ButtonTitleBlock block = ^(NSString * title) {
+    ZYButtonTitleBlock block = ^(NSString * title) {
         [self setTitle:title forState:UIControlStateNormal];
         return self;
     };
     return block;
 }
 
-- (ButtonTitleBlock)setTitleStateSelected {
+- (ZYButtonTitleBlock)setTitleStateSelected {
     
-    ButtonTitleBlock block = ^(NSString * title) {
+    ZYButtonTitleBlock block = ^(NSString * title) {
         [self setTitle:title forState:UIControlStateSelected];
         return self;
     };
     return block;
 }
 
-- (ButtonTitleColorBlock)setTitleColorStateNormal {
+- (ZYButtonTitleColorBlock)setTitleColorStateNormal {
     
-    ButtonTitleColorBlock block = ^(UIColor * color) {
+    ZYButtonTitleColorBlock block = ^(UIColor * color) {
         [self setTitleColor:color forState:UIControlStateNormal];
         return self;
     };
     return block;
 }
 
-- (ButtonTitleColorBlock)setTitleColorStateSelected {
+- (ZYButtonTitleColorBlock)setTitleColorStateSelected {
     
-    ButtonTitleColorBlock block = ^(UIColor * color) {
+    ZYButtonTitleColorBlock block = ^(UIColor * color) {
         [self setTitleColor:color forState:UIControlStateSelected];
         return self;
     };
     return block;
 }
 
-- (ButtonImageBlock)setImageStateNormal {
+- (ZYButtonImageBlock)setImageStateNormal {
     
-    ButtonImageBlock block = ^(UIImage * image) {
+    ZYButtonImageBlock block = ^(UIImage * image) {
         [self setImage:image forState:UIControlStateNormal];
         [self setImage:image forState:UIControlStateHighlighted];
         return self;
@@ -55,9 +55,9 @@
     return block;
 }
 
-- (ButtonImageBlock)setImageStateSelected {
+- (ZYButtonImageBlock)setImageStateSelected {
     
-    ButtonImageBlock block = ^(UIImage * image) {
+    ZYButtonImageBlock block = ^(UIImage * image) {
         [self setImage:image forState:UIControlStateSelected];
         return self;
     };

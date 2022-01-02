@@ -13,15 +13,23 @@
 #define ZYWeakSelf(type)  __weak typeof(type) weak##type = type;
 #define ZYStrongSelf(type)  __strong typeof(type) type = weak##type;
 
-#define SCREEN_SIZE [UIScreen mainScreen].bounds.size
-#define SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
-#define SCREENH_HEIGHT [UIScreen mainScreen].bounds.size.height
-
 #ifdef DEBUG
 #define ZYLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
 #else
 #define ZYLog(...)
 #endif
+
+static inline CGSize SCREEN_SIZE() {
+    return UIScreen.mainScreen.bounds.size;
+}
+
+static inline CGFloat SCREEN_WIDTH() {
+    return UIScreen.mainScreen.bounds.size.width;
+}
+
+static inline CGFloat SCREENH_HEIGHT() {
+    return UIScreen.mainScreen.bounds.size.height;
+}
 
 /// 检查null nil
 static inline BOOL ZYCheckNull(NSString * string) {

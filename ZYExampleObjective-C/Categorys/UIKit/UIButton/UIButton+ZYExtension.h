@@ -9,9 +9,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef UIButton *_Nullable(^ButtonTitleBlock)(NSString *title);
-typedef UIButton *_Nullable(^ButtonTitleColorBlock)(UIColor *titleColor);
-typedef UIButton *_Nullable(^ButtonImageBlock)(UIImage *image);
+typedef UIButton *_Nullable(^ZYButtonTitleBlock)(NSString *title);
+typedef UIButton *_Nullable(^ZYButtonTitleColorBlock)(UIColor *titleColor);
+typedef UIButton *_Nullable(^ZYButtonImageBlock)(UIImage *image);
 
 @interface UIButton (ZYExtension)
 
@@ -24,17 +24,17 @@ button.setTitleStateNormal(@"1")
 .setImageStateNormal(ZYImageNamed(@"3"))
 .setImageStateSelected(ZYImageNamed(@"4"))*/
 
-- (ButtonTitleBlock)setTitleStateNormal;
+- (ZYButtonTitleBlock)setTitleStateNormal;
 
-- (ButtonTitleBlock)setTitleStateSelected;
+- (ZYButtonTitleBlock)setTitleStateSelected;
 
-- (ButtonTitleColorBlock)setTitleColorStateNormal;
+- (ZYButtonTitleColorBlock)setTitleColorStateNormal;
 
-- (ButtonTitleColorBlock)setTitleColorStateSelected;
+- (ZYButtonTitleColorBlock)setTitleColorStateSelected;
 
-- (ButtonImageBlock)setImageStateNormal;
+- (ZYButtonImageBlock)setImageStateNormal;
 
-- (ButtonImageBlock)setImageStateSelected;
+- (ZYButtonImageBlock)setImageStateSelected;
 
 
 @end

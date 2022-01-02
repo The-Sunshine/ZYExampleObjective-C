@@ -46,8 +46,8 @@
                                           prepareReleaseURLString:@"http://prepare.com"
                                                  releaseURLString:@"http://release.com"];
     [ZYEnvironmentService addOtherServiceDisplayStringArray:@[@"文件服务器http://souhu.com"]];
-    ZYLog(@"%@",[ZYEnvironmentService localEnvironmentURLString]);
-    NSLog(@"%ld",[ZYEnvironmentService currentEnvironment]);
+    ZYLog(@"%@",[ZYEnvironmentService currentEnvironmentURLString]);
+    ZYLog(@"%ld",[ZYEnvironmentService currentEnvironment]);
 
 #ifdef DEBUG
     YYFPSLabel * fps = [[YYFPSLabel alloc] initWithFrame:CGRectMake(5, 30, 0, 0)];

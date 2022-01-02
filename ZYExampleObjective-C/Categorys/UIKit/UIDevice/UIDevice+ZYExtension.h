@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIDevice (ZYExtension)
 
 /// 系统版本
-+ (float)systemVersion;
++ (float)systemVersionFloat;
 
 /// 模拟器
 + (BOOL)isSimulator;

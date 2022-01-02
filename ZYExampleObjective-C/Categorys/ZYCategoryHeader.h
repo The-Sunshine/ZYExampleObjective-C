@@ -15,10 +15,11 @@ static inline UIImage * ZYImageNamed(NSString * imageName) {
 
 /// UIKit
 #import "UIButton+ZYExtension.h"
-#import "UIBarButtonItem+ZYExtension.h"
+#import "UIImageView+ZYExtension.h"
 #import "UIView+ZYExtension.h"
-#import "UIDevice+ZYExtension.h"
 #import "UIViewController+ZYExtension.h"
+#import "UIBarButtonItem+ZYExtension.h"
+#import "UIDevice+ZYExtension.h"
 #import "UIWindow+ZYExtension.h"
 
 
@@ -27,6 +28,7 @@ static inline UIImage * ZYImageNamed(NSString * imageName) {
 
 /// Foundation
 #import "NSUserDefaults+ZYExtension.h"
+#import "NSString+ZYExtension.h"
 
 
 

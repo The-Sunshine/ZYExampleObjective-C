@@ -10,7 +10,7 @@
 @implementation UIDevice (ZYExtension)
 
 
-+ (float)systemVersion {
++ (float)systemVersionFloat {
     return UIDevice.currentDevice.systemVersion.floatValue;
 }
 

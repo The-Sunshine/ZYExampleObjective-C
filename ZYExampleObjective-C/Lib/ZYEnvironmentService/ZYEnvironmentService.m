@@ -75,6 +75,7 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
         [self.typeArray addObject:@(ZYEnvironmentServiceTypeRelease)];
     }
 
+    NSAssert(self.urlStringArray.count, @"prepareEnvironmentDevelopURLString未配置url");
     ZYEnvironmentServiceType type = [ZYEnvironmentService currentEnvironment];
     /// 避免修改配置url时造成异常 如不存在当前环境url 则默认为开发环境
     if (![self.typeArray containsObject:@(type)]) {
@@ -162,9 +163,11 @@ static NSString * kZYEnvironmentURLString = @"kZYEnvironmentURLString";
     }];
     
     [self.otherServiceArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIAlertAction * action = [UIAlertAction actionWithTitle:obj style:UIAlertActionStyleDefault handler:nil];
-        [alertController addAction:action];
-        action.enabled = false;
+        if (obj.length > 0) {
+            UIAlertAction * action = [UIAlertAction actionWithTitle:obj style:UIAlertActionStyleDefault handler:nil];
+            [alertController addAction:action];
+            action.enabled = false;
+        }
     }];
     
     UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {

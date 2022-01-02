@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) id model;
 
+- (void)initUI;
+
 @end
 
 NS_ASSUME_NONNULL_END

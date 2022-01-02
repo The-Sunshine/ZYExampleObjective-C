@@ -9,10 +9,10 @@
 
 @implementation UIBarButtonItem (ZYExtension)
 
-+ (UIBarButtonItem *)barButtonItemWithImage:(UIImage *)image
-                              selectedImage:(UIImage *)selectedImage
-                                     target:(id)target
-                                     action:(SEL)action {
++ (UIBarButtonItem *)zy_barButtonItemWithImage:(UIImage *)image
+                                 selectedImage:(UIImage *)selectedImage
+                                        target:(id)target
+                                        action:(SEL)action {
     
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:image forState:UIControlStateNormal];
@@ -30,11 +30,11 @@
     return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
-+ (UIBarButtonItem *)barButtonItemWithTitle:(NSString *)title
-                                 titleColor:(UIColor *)titleColor
-                                  titleFont:(UIFont *)titleFont
-                                     target:(id)target
-                                     action:(SEL)action {
++ (UIBarButtonItem *)zy_barButtonItemWithTitle:(NSString *)title
+                                    titleColor:(UIColor *)titleColor
+                                     titleFont:(UIFont *)titleFont
+                                        target:(id)target
+                                        action:(SEL)action {
     
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:title forState:UIControlStateNormal];
