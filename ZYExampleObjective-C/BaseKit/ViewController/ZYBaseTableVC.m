@@ -33,7 +33,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    // 适配 ios 11
+    /// 适配 iOS11
     self.tableView.estimatedRowHeight = 0;
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;

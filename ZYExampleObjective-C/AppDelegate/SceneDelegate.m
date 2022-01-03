@@ -14,7 +14,7 @@
 #ifdef DEBUG
 #import "YYFPSLabel.h"
 #import "MLeaksFinder.h"
-
+#import "ZYDisplayCurrentVC.h"
 
 #endif
 
@@ -27,12 +27,13 @@
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
 
+    [self debugMonitor];
+
     self.window = [UIWindow.alloc initWithWindowScene:(UIWindowScene *)scene];
     self.window.frame = UIScreen.mainScreen.bounds;
     self.window.rootViewController = ZYTabbarViewController.new;
     [self.window makeKeyAndVisible];
 
-    [self debugMonitor];
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
@@ -53,7 +54,10 @@
     YYFPSLabel * fps = [[YYFPSLabel alloc] initWithFrame:CGRectMake(5, 30, 0, 0)];
     [self.window addSubview:fps];
     
-
+    ZYDisplayCurrentVC.share.note = @"自定义";
+    ZYDisplayCurrentVC.share.whiteListVCArray = @[@""];
+    ZYDisplayCurrentVC.share.whiteListPrefixVCArray = @[@"FLEX"];
+    
 #endif
 }
 

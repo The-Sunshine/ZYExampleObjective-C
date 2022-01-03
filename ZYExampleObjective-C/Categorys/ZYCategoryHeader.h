@@ -21,6 +21,8 @@ static inline UIImage * ZYImageNamed(NSString * imageName) {
 #import "UIBarButtonItem+ZYExtension.h"
 #import "UIDevice+ZYExtension.h"
 #import "UIWindow+ZYExtension.h"
+#import "UITableView+ZYExtension.h"
+#import "UILabel+ZYExtension.h"
 
 
 

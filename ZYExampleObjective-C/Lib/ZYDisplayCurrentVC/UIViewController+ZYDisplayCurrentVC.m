@@ -34,6 +34,26 @@
 - (BOOL)isPrivateVC {
     
     NSString * selfClass = NSStringFromClass(self.class);
+    __block BOOL isWhiteList = false;
+
+    [ZYDisplayCurrentVC.share.whiteListVCArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isEqualToString:selfClass]) {
+            isWhiteList = true;
+            *stop = true;
+        }
+    }];
+
+    if (isWhiteList) return true;
+
+    [ZYDisplayCurrentVC.share.whiteListPrefixVCArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([selfClass hasPrefix:obj]) {
+            isWhiteList = true;
+            *stop = true;
+        }
+    }];
+    
+    if (isWhiteList) return true;
+    
     return [selfClass isEqualToString:@"UIAlertController"] ||
     [selfClass isEqualToString:@"_UIAlertControllerTextFieldViewController"] ||
     [selfClass isEqualToString:@"UIApplicationRotationFollowingController"] ||

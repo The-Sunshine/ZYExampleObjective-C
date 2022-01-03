@@ -19,6 +19,12 @@
 /// 显示信息标签
 @property (nonatomic, strong, readonly) UILabel * noteLabel;
 
+/// viewController白名单
+@property (nonatomic, strong) NSArray<NSString *> * whiteListVCArray;
+
+/// viewController prefix白名单
+@property (nonatomic, strong) NSArray<NSString *> * whiteListPrefixVCArray;
+
 @end
 
 #endif

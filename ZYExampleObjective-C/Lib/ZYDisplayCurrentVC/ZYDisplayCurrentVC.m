@@ -46,15 +46,20 @@
         label.layer.cornerRadius = 3;
         label.layer.masksToBounds = true;
         _noteLabel = label;
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            UIWindow * window = [self currentWindow];
-            if (window) {
-                [window addSubview:label];
-            }
-        });
+        [self addLabel:label];
     }
     return _noteLabel;
+}
+
+- (void)addLabel:(UILabel *)label {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        UIWindow * window = [self currentWindow];
+        if (window) {
+            [window addSubview:label];
+        } else {
+            [self addLabel:label];
+        }
+    });
 }
 
 - (UIWindow *)currentWindow {
