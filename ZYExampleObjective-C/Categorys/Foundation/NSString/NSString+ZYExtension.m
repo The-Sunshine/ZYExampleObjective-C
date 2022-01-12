@@ -10,8 +10,9 @@
 @implementation NSString (ZYExtension)
 
 - (BOOL)zy_isEmptyString {
-    return ([self isEqual:[NSNull null]] || !self);
-    return self.length == 0;
+    return ([self isEqual:[NSNull null]] ||
+            !self ||
+            self.length == 0);
 }
 
 - (BOOL)zy_isReplaceSpaceEmptyString {

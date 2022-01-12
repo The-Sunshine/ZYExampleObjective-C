@@ -699,7 +699,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## FMDB
 
 If you are using FMDB in your project, I'd love to hear about it.  Let Gus know
-by sending an email to gus@flyingmeat.com.
+by sending an email to gus@zyingmeat.com.
 
 And if you happen to come across either Gus Mueller or Rob Ryan in a bar, you
 might consider purchasing a drink of their choosing if FMDB has been useful to
@@ -707,7 +707,7 @@ you.
 
 Finally, and shortly, this is the MIT License.
 
-Copyright (c) 2008-2014 Flying Meat Inc.
+Copyright (c) 2008-2014 zying Meat Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

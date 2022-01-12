@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZYBaseModel : NSObject
 
+@property (nonatomic, strong) NSString * ID;
+
 @end
 
 NS_ASSUME_NONNULL_END

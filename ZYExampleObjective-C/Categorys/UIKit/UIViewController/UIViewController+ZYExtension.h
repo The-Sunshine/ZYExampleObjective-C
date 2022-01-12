@@ -11,6 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (ZYExtension)
 
+
+/// push跳转
+/// @param viewController UIViewController
+- (void)zy_navigation_pushViewController:(UIViewController *)viewController;
+
 /// 获取当前屏幕显示的viewcontroller
 + (UIViewController *)currentViewController;
 

@@ -10,7 +10,10 @@
 
 @implementation UIViewController (ZYExtension)
 
-/// 获取当前屏幕显示的viewcontroller
+- (void)zy_navigation_pushViewController:(UIViewController *)viewController {
+    [self.navigationController pushViewController:viewController animated:true];
+}
+
 + (UIViewController *)currentViewController {
     
     UIWindow * window = [UIWindow currentWindow];

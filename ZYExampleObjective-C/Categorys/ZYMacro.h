@@ -31,12 +31,6 @@ static inline CGFloat SCREENH_HEIGHT() {
     return UIScreen.mainScreen.bounds.size.height;
 }
 
-/// 检查null nil
-static inline BOOL ZYCheckNull(NSString * string) {
-    return [string isEqual:[NSNull null]] ||
-    (string == nil ? @"" : [NSString stringWithFormat:@"%@", string]);
-}
-
 // GCD - 一次性执行
 static inline void ZYDispatch_once_block(DISPATCH_NOESCAPE dispatch_block_t block) {
     static dispatch_once_t onceToken;

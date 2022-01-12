@@ -7,6 +7,7 @@
 
 #import "ZYDemoViewController.h"
 #import "ZYEnvironmentService.h"
+#import "ZYMineViewController.h"
 
 
 #ifdef DEBUG
@@ -37,9 +38,9 @@
 
 #endif
     
-//    ZYDemoViewController * vc = ZYDemoViewController.new;
-//    vc.title = @"第二页";
-//    [self.navigationController pushViewController:vc animated:true];
+    ZYMineViewController * vc = ZYMineViewController.new;
+    vc.title = @"第二页";
+    [self zy_navigation_pushViewController:vc];
 }
 
 - (void)dealloc {

@@ -74,7 +74,8 @@ target 'ZYExampleObjective-C' do
 #  pod 'ZWHTMLImage'       # WEB网页、HTML的native图片预览功能 目前存在SDWebImage和UIWebview版本问题
   
 
-  
+  # KJNetworkPlugin 插件版网络请求架构 
+
   #  learn
 #  HSUpdateApp XHVersion Version 更新
 #  https://github.com/MQCCoder/XYIAPKit 内购
@@ -82,6 +83,11 @@ target 'ZYExampleObjective-C' do
 #  https://github.com/wangziwu/Swift swift基础知识大全,🚀Swift学习从简单到复杂
 #  https://github.com/wujunyang/MVVMReactiveCocoaDemo ReactiveCocoa的知识点及MVVM模式运用
 #  https://github.com/SmileZXLee/ZXHookDetection hook及越狱的基本防护与检测(动态库注入检测、hook检测与防护、越狱检测、签名校验、IDA反编译分析加密协议Demo)；【数据传输安全】浅谈http、https与数据加密
+# https://www.jianshu.com/p/3f9ed86a45cb  启动优化：二进制重排
+# https://juejin.cn/post/6844904121896534024 深入探索 iOS 启动速度优化（二进制重排）
+# https://github.com/wsl2ls/WSLTransferAnimation iOS 自定义转场动画集锦
+# http://liumh.com/2018/10/11/beehive-analysis/ 阿里组件化框架BeeHive解析
+# https://tech.youzan.com/you-zan-ioszu-jian-hua-jia-gou-she-ji-shi-jian/ 有赞移动 iOS 组件化（模块化）架构设计实践
 
 
   # MVVMReactiveCocoa

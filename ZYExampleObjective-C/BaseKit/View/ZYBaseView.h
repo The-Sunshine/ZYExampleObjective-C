@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZYBaseView : UIView
 
+@property (nonatomic, strong) id model;
+
 @end
 
 NS_ASSUME_NONNULL_END

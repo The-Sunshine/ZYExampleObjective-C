@@ -17,6 +17,11 @@
     return self;
 }
 
+- (void)setModel:(id)model {
+    _model = model;
+    
+}
+
 - (void)initUI {
     
 }
