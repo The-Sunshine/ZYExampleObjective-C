@@ -49,7 +49,10 @@
 		2276AEA72754D8C0002ADDDC /* ZYBaseTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2276AEA62754D8C0002ADDDC /* ZYBaseTableVC.m */; };
 		22B97F53278ECF3C00313F83 /* ZYSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B97F51278ECF3C00313F83 /* ZYSwitch.m */; };
 		22B97FB3278ED40C00313F83 /* ZYArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B97FB2278ED40C00313F83 /* ZYArrayDataSource.m */; };
-		22B97FB9278EEBBD00313F83 /* UINavigationController+ZYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B97FB8278EEBBD00313F83 /* UINavigationController+ZYExtension.m */; };
+		22B97FEF279046A700313F83 /* UIFont+ZYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B97FEE279046A700313F83 /* UIFont+ZYExtension.m */; };
+		22B97FF327904CD500313F83 /* UITableViewCell+ZYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B97FF227904CD500313F83 /* UITableViewCell+ZYExtension.m */; };
+		22B97FF827905FE500313F83 /* UIAlertController+ZYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B97FF727905FE500313F83 /* UIAlertController+ZYExtension.m */; };
+		22B97FFD2791415700313F83 /* UITextField+ZYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B97FFC2791415700313F83 /* UITextField+ZYExtension.m */; };
 		22CFC3EC2760AFEA008AF986 /* WHGradientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CFC3EA2760AFEA008AF986 /* WHGradientHelper.m */; };
 		22CFC4A62762063A008AF986 /* SZKCleanCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CFC4A52762063A008AF986 /* SZKCleanCache.m */; };
 		22CFC4AD27677E72008AF986 /* UIButton+ZYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CFC4AC27677E72008AF986 /* UIButton+ZYExtension.m */; };
@@ -57,6 +60,9 @@
 		22CFC4BE2768735C008AF986 /* UIBarButtonItem+ZYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CFC4BD2768735C008AF986 /* UIBarButtonItem+ZYExtension.m */; };
 		22CFC516276C5B47008AF986 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22CFC518276C5B47008AF986 /* InfoPlist.strings */; };
 		22CFC51C276C5CE7008AF986 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22CFC51E276C5CE7008AF986 /* Localizable.strings */; };
+		22EEC96B279197B40058726C /* ZYVersionUpdateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EEC965279197B40058726C /* ZYVersionUpdateModel.m */; };
+		22EEC96C279197B40058726C /* ZYVersionUpdateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EEC966279197B40058726C /* ZYVersionUpdateView.m */; };
+		22EEC96D279197B40058726C /* ZYVersionUpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EEC967279197B40058726C /* ZYVersionUpdateManager.m */; };
 		22F3F1722758EC9D00097DFB /* ZYButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F3F1702758EC9D00097DFB /* ZYButton.m */; };
 		EB5F74E510DAD8E26B7466FB /* Pods_ZYExampleObjective_C.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADEF72007EBC91109D4CE9C7 /* Pods_ZYExampleObjective_C.framework */; };
 /* End PBXBuildFile section */
@@ -166,8 +172,14 @@
 		22B97F52278ECF3C00313F83 /* ZYSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYSwitch.h; sourceTree = "<group>"; };
 		22B97FB1278ED40C00313F83 /* ZYArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYArrayDataSource.h; sourceTree = "<group>"; };
 		22B97FB2278ED40C00313F83 /* ZYArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYArrayDataSource.m; sourceTree = "<group>"; };
-		22B97FB7278EEBBD00313F83 /* UINavigationController+ZYExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ZYExtension.h"; sourceTree = "<group>"; };
-		22B97FB8278EEBBD00313F83 /* UINavigationController+ZYExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+ZYExtension.m"; sourceTree = "<group>"; };
+		22B97FED279046A700313F83 /* UIFont+ZYExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+ZYExtension.h"; sourceTree = "<group>"; };
+		22B97FEE279046A700313F83 /* UIFont+ZYExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ZYExtension.m"; sourceTree = "<group>"; };
+		22B97FF127904CD500313F83 /* UITableViewCell+ZYExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+ZYExtension.h"; sourceTree = "<group>"; };
+		22B97FF227904CD500313F83 /* UITableViewCell+ZYExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+ZYExtension.m"; sourceTree = "<group>"; };
+		22B97FF627905FE500313F83 /* UIAlertController+ZYExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ZYExtension.h"; sourceTree = "<group>"; };
+		22B97FF727905FE500313F83 /* UIAlertController+ZYExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ZYExtension.m"; sourceTree = "<group>"; };
+		22B97FFB2791415700313F83 /* UITextField+ZYExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+ZYExtension.h"; sourceTree = "<group>"; };
+		22B97FFC2791415700313F83 /* UITextField+ZYExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+ZYExtension.m"; sourceTree = "<group>"; };
 		22CFC3EA2760AFEA008AF986 /* WHGradientHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHGradientHelper.m; sourceTree = "<group>"; };
 		22CFC3EB2760AFEA008AF986 /* WHGradientHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHGradientHelper.h; sourceTree = "<group>"; };
 		22CFC4A42762063A008AF986 /* SZKCleanCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZKCleanCache.h; sourceTree = "<group>"; };
@@ -184,6 +196,12 @@
 		22CFC519276C5B4B008AF986 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		22CFC51D276C5CE7008AF986 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		22CFC51F276C5CE9008AF986 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		22EEC965279197B40058726C /* ZYVersionUpdateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYVersionUpdateModel.m; sourceTree = "<group>"; };
+		22EEC966279197B40058726C /* ZYVersionUpdateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYVersionUpdateView.m; sourceTree = "<group>"; };
+		22EEC967279197B40058726C /* ZYVersionUpdateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYVersionUpdateManager.m; sourceTree = "<group>"; };
+		22EEC968279197B40058726C /* ZYVersionUpdateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYVersionUpdateView.h; sourceTree = "<group>"; };
+		22EEC969279197B40058726C /* ZYVersionUpdateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYVersionUpdateModel.h; sourceTree = "<group>"; };
+		22EEC96A279197B40058726C /* ZYVersionUpdateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYVersionUpdateManager.h; sourceTree = "<group>"; };
 		22F3F1702758EC9D00097DFB /* ZYButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYButton.m; sourceTree = "<group>"; };
 		22F3F1712758EC9D00097DFB /* ZYButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYButton.h; sourceTree = "<group>"; };
 		2B3462212CC2204CBF29AE92 /* Pods-ZYExampleObjective-C.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZYExampleObjective-C.debug.xcconfig"; path = "Target Support Files/Pods-ZYExampleObjective-C/Pods-ZYExampleObjective-C.debug.xcconfig"; sourceTree = "<group>"; };
@@ -238,13 +256,16 @@
 		220A73DE2773375100CB9D81 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				22B97FF92790637900313F83 /* UIAlertController */,
 				22CFC4BB27687343008AF986 /* UIBarButtonItem */,
 				22CFC4B027678007008AF986 /* UIButton */,
 				220A73782770541F00CB9D81 /* UIDevice */,
+				22B97FF02790481600313F83 /* UIFont */,
 				2259409327816C3D00245BAC /* UIImageView */,
 				225940E92782C0B700245BAC /* UILabel */,
-				22B97FBA278EEBCD00313F83 /* UINavigationController */,
 				225940E52782BDA400245BAC /* UITableView */,
+				22B97FF427904E6700313F83 /* UITableViewCell */,
+				22B97FFA2791413700313F83 /* UITextField */,
 				22CFC4B727686842008AF986 /* UIView */,
 				220A737C2770587F00CB9D81 /* UIViewController */,
 				22443236277358AB00C0539A /* UIWindow */,
@@ -302,6 +323,7 @@
 		2244322B277354E200C0539A /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				22B97FF5279051C000313F83 /* VersionUpdateService */,
 				224F44DD277993DB00F36F3D /* PushService */,
 				224F44DC277993D200F36F3D /* IMService */,
 			);
@@ -558,16 +580,17 @@
 		2276AE942754B1D1002ADDDC /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				22B97FB0278ED40C00313F83 /* ZYArrayDataSource */,
-				22B97F50278ECF3C00313F83 /* ZYSwitch */,
 				22CFC4A727620641008AF986 /* SZKCleanCache */,
 				2244322C277355E700C0539A /* WHC_Debuger */,
 				22CFC3E92760AFEA008AF986 /* WHGradientHelper */,
 				2213D0282754FF90009F892F /* YYFPSLabel */,
+				22B97FB0278ED40C00313F83 /* ZYArrayDataSource */,
 				22F3F16F2758EC9D00097DFB /* ZYButton */,
 				224F44E7277C375F00F36F3D /* ZYDisplayCurrentVC */,
 				2233150E27802A4F00097CF2 /* ZYEnvironmentService */,
 				2276AE9A2754D5AD002ADDDC /* ZYRefresh */,
+				22B97F50278ECF3C00313F83 /* ZYSwitch */,
+				22EEC964279197B40058726C /* ZYVersionUpdate */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -641,13 +664,47 @@
 			path = ZYArrayDataSource;
 			sourceTree = "<group>";
 		};
-		22B97FBA278EEBCD00313F83 /* UINavigationController */ = {
+		22B97FF02790481600313F83 /* UIFont */ = {
 			isa = PBXGroup;
 			children = (
-				22B97FB7278EEBBD00313F83 /* UINavigationController+ZYExtension.h */,
-				22B97FB8278EEBBD00313F83 /* UINavigationController+ZYExtension.m */,
+				22B97FED279046A700313F83 /* UIFont+ZYExtension.h */,
+				22B97FEE279046A700313F83 /* UIFont+ZYExtension.m */,
 			);
-			path = UINavigationController;
+			path = UIFont;
+			sourceTree = "<group>";
+		};
+		22B97FF427904E6700313F83 /* UITableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				22B97FF127904CD500313F83 /* UITableViewCell+ZYExtension.h */,
+				22B97FF227904CD500313F83 /* UITableViewCell+ZYExtension.m */,
+			);
+			path = UITableViewCell;
+			sourceTree = "<group>";
+		};
+		22B97FF5279051C000313F83 /* VersionUpdateService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VersionUpdateService;
+			sourceTree = "<group>";
+		};
+		22B97FF92790637900313F83 /* UIAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				22B97FF627905FE500313F83 /* UIAlertController+ZYExtension.h */,
+				22B97FF727905FE500313F83 /* UIAlertController+ZYExtension.m */,
+			);
+			path = UIAlertController;
+			sourceTree = "<group>";
+		};
+		22B97FFA2791413700313F83 /* UITextField */ = {
+			isa = PBXGroup;
+			children = (
+				22B97FFB2791415700313F83 /* UITextField+ZYExtension.h */,
+				22B97FFC2791415700313F83 /* UITextField+ZYExtension.m */,
+			);
+			path = UITextField;
 			sourceTree = "<group>";
 		};
 		22CFC3E92760AFEA008AF986 /* WHGradientHelper */ = {
@@ -702,6 +759,19 @@
 				22CFC4BD2768735C008AF986 /* UIBarButtonItem+ZYExtension.m */,
 			);
 			path = UIBarButtonItem;
+			sourceTree = "<group>";
+		};
+		22EEC964279197B40058726C /* ZYVersionUpdate */ = {
+			isa = PBXGroup;
+			children = (
+				22EEC96A279197B40058726C /* ZYVersionUpdateManager.h */,
+				22EEC967279197B40058726C /* ZYVersionUpdateManager.m */,
+				22EEC969279197B40058726C /* ZYVersionUpdateModel.h */,
+				22EEC965279197B40058726C /* ZYVersionUpdateModel.m */,
+				22EEC968279197B40058726C /* ZYVersionUpdateView.h */,
+				22EEC966279197B40058726C /* ZYVersionUpdateView.m */,
+			);
+			path = ZYVersionUpdate;
 			sourceTree = "<group>";
 		};
 		22F3F16F2758EC9D00097DFB /* ZYButton */ = {
@@ -916,6 +986,7 @@
 				2276AE792754B0AB002ADDDC /* ZYBaseView.m in Sources */,
 				2276AE7F2754B0D0002ADDDC /* ZYBaseViewModel.m in Sources */,
 				22443239277358AC00C0539A /* UIWindow+ZYExtension.m in Sources */,
+				22B97FF827905FE500313F83 /* UIAlertController+ZYExtension.m in Sources */,
 				22443234277355E700C0539A /* ZYDisplayCurrentVC.m in Sources */,
 				2276AE6C2754AF96002ADDDC /* ZYBaseViewController.m in Sources */,
 				2213D0272754FF8C009F892F /* YYFPSLabel.m in Sources */,
@@ -924,28 +995,33 @@
 				2276AE9D2754D5CF002ADDDC /* ZYRefreshHeader.m in Sources */,
 				225940E82782BF6C00245BAC /* UILabel+ZYExtension.m in Sources */,
 				2259408F278095EB00245BAC /* NSString+ZYExtension.m in Sources */,
+				22B97FEF279046A700313F83 /* UIFont+ZYExtension.m in Sources */,
 				225940E42782BD5B00245BAC /* UITableView+ZYExtension.m in Sources */,
 				2276AE6F2754B019002ADDDC /* ZYTabbarViewController.m in Sources */,
 				2276AEA72754D8C0002ADDDC /* ZYBaseTableVC.m in Sources */,
 				22B97F53278ECF3C00313F83 /* ZYSwitch.m in Sources */,
+				22B97FF327904CD500313F83 /* UITableViewCell+ZYExtension.m in Sources */,
 				220A73DD2773369000CB9D81 /* NSUserDefaults+ZYExtension.m in Sources */,
 				220A737F2770589A00CB9D81 /* UIViewController+ZYExtension.m in Sources */,
 				22CFC4BE2768735C008AF986 /* UIBarButtonItem+ZYExtension.m in Sources */,
 				224F44D727788FE500F36F3D /* ZYNewsViewController.m in Sources */,
+				22B97FFD2791415700313F83 /* UITextField+ZYExtension.m in Sources */,
 				2276AE722754B02E002ADDDC /* ZYNavigationController.m in Sources */,
+				22EEC96B279197B40058726C /* ZYVersionUpdateModel.m in Sources */,
 				2276AE8E2754B17D002ADDDC /* ZYBaseTableViewModel.m in Sources */,
 				22443233277355E700C0539A /* UIViewController+ZYDisplayCurrentVC.m in Sources */,
 				2276AEA32754D6CD002ADDDC /* ZYConst.m in Sources */,
 				2276AE822754B0EA002ADDDC /* ZYDemoModel.m in Sources */,
 				22443235277355E700C0539A /* UIView+WHC_Debuger.m in Sources */,
+				22EEC96D279197B40058726C /* ZYVersionUpdateManager.m in Sources */,
 				2233151127802A4F00097CF2 /* ZYEnvironmentService.m in Sources */,
 				220A737B2770549700CB9D81 /* UIDevice+ZYExtension.m in Sources */,
+				22EEC96C279197B40058726C /* ZYVersionUpdateView.m in Sources */,
 				2276AE852754B107002ADDDC /* ZYDemoView.m in Sources */,
 				2276AE912754B197002ADDDC /* ZYDemoTableViewModel.m in Sources */,
 				2276AE472754AF2D002ADDDC /* main.m in Sources */,
 				22CFC4A62762063A008AF986 /* SZKCleanCache.m in Sources */,
 				22CFC4BA27686858008AF986 /* UIView+ZYExtension.m in Sources */,
-				22B97FB9278EEBBD00313F83 /* UINavigationController+ZYExtension.m in Sources */,
 				224F44E12779943900F36F3D /* ZYMineViewController.m in Sources */,
 				22CFC3EC2760AFEA008AF986 /* WHGradientHelper.m in Sources */,
 				22CFC4AD27677E72008AF986 /* UIButton+ZYExtension.m in Sources */,

@@ -19,6 +19,4 @@
     return [self stringByReplacingOccurrencesOfString:@" " withString:@""].length == 0;
 }
 
-
-
 @end

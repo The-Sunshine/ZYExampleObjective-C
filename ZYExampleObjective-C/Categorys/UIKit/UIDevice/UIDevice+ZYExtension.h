@@ -14,11 +14,20 @@ NS_ASSUME_NONNULL_BEGIN
 /// 系统版本
 + (float)systemVersionFloat;
 
+/// app 版本号
++ (NSString *)app_version;
+
+/// app build 版本号
++ (NSString *)app_buildVersion;
+
+/// 应用名称
++ (NSString *)app_name;
+
+/// 当前系统语言
++ (NSString *)app_currentLanguage;
+
 /// 模拟器
 + (BOOL)isSimulator;
-
-/// 判断iphoneX
-+ (BOOL)isIphoneX;
 
 /// 判断iphone
 + (BOOL)isIphone;

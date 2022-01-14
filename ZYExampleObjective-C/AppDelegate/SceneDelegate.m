@@ -9,9 +9,10 @@
 #import "ZYTabbarViewController.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "ZYEnvironmentService.h"
+#import "ZYVersionUpdateManager.h"
+
 
 /// DEBUG检测
-/// 
 #ifdef DEBUG
 #import "YYFPSLabel.h"
 #import "MLeaksFinder.h"
@@ -35,6 +36,7 @@
     self.window.rootViewController = ZYTabbarViewController.new;
     [self.window makeKeyAndVisible];
 
+    [self versionUpdate];
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
@@ -60,6 +62,25 @@
     ZYDisplayCurrentVC.share.whiteListPrefixVCArray = @[@"FLEX"];
     
 #endif
+}
+
+- (void)versionUpdate {
+    /// 延迟0.5秒 window存在 再加载
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        /// 商店
+        [ZYVersionUpdateManager.shared checkAppStoreVersionUpdate:^(BOOL success, NSString * _Nonnull msg) {
+            if (!success) {
+                NSLog(@"%@", msg);
+            }
+        }];
+        
+        /// 服务器
+//        [ZYVersionUpdateManager.shared checkServiceVersionUpdate:^(BOOL success, NSString * _Nonnull msg) {
+//            if (!success) {
+//                NSLog(@"%@", msg);
+//            }
+//        }];
+    });
 }
 
 - (void)sceneDidDisconnect:(UIScene *)scene {

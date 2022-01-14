@@ -7,7 +7,9 @@
 
 #import "ZYNewsViewController.h"
 
-@interface ZYNewsViewController ()
+@interface ZYNewsViewController ()<UITableViewDelegate>
+
+@property (nonatomic,strong) ZYArrayDataSource * dataSource;
 
 @end
 
@@ -16,6 +18,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)initUI {
+    UITableView * tableView = [UITableView newTableViewGroupedWithTarget:self];
+    [self.view addSubview:tableView];
+    [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.offset(0);
+    }];
+    
+    ZYArrayDataSource * dataSource = [ZYArrayDataSource newWithReuseIdentifier:@"cell" configureBlock:^(id  _Nonnull cell, NSIndexPath * _Nonnull indexPath) {
+        UITableViewCell * asd = (UITableViewCell *)cell;
+        asd.textLabel.text = @"白衣-------";
+    }];
+    _dataSource = dataSource;
+    tableView.dataSource = _dataSource;
+    [dataSource reloadTableCollectionView:tableView numberOfSections:2 numberOfRows:10];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 44;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+ 
+    
 }
 
 /*

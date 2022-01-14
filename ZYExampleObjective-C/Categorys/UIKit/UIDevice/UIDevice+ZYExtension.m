@@ -14,14 +14,25 @@
     return UIDevice.currentDevice.systemVersion.floatValue;
 }
 
++ (NSString *)app_version {
+    return [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];;
+}
+
++ (NSString *)app_buildVersion {
+    return [NSBundle.mainBundle.infoDictionary objectForKey:@"CFBundleVersion"];;
+}
+
++ (NSString *)app_name {
+    return [NSBundle.mainBundle.infoDictionary objectForKey:@"CFBundleDisplayName"];;
+}
+
++ (NSString *)app_currentLanguage {
+    return ([NSLocale.preferredLanguages objectAtIndex:0]);;
+}
+
 + (BOOL)isSimulator {
     return (TARGET_IPHONE_SIMULATOR == 1 &&
             TARGET_OS_IPHONE == 1);
-}
-
-+ (BOOL)isIphoneX {
-    return ([UIScreen mainScreen].bounds.size.width >= 375.0f &&
-            [UIScreen mainScreen].bounds.size.height >= 812.0f);
 }
 
 + (BOOL)isIphone {
@@ -32,5 +43,5 @@
     return (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad);
 }
 
-
 @end
+

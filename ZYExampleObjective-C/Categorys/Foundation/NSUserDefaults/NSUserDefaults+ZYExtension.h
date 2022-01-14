@@ -9,11 +9,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+static inline void zy_userDefaults_setValue(_Nullable id value,NSString * key) {
+    [NSUserDefaults.standardUserDefaults setValue:value forKey:key];
+    [NSUserDefaults.standardUserDefaults synchronize];
+}
+
+static inline _Nullable id zy_userDefaults_valueForKey(NSString * key) {
+    return [NSUserDefaults.standardUserDefaults valueForKey:key];
+}
+
 @interface NSUserDefaults (ZYExtension)
 
-+ (void)zy_setValue:(nullable id)value forKey:(NSString *)key;
 
-+ (nullable id)zy_valueForKey:(NSString *)key;
 
 @end
 

@@ -12,13 +12,14 @@
 /*
 UIView * whiteView = UIView.new;
 [self addSubview:whiteView];
-whiteView.cornerRadius = 10;
+whiteView.cornerRadius = <#radius#>;
 whiteView.layer.masksToBounds = true;
-whiteView.backgroundColor = UIColor.whiteColor;
+whiteView.backgroundColor = <#color#>;
 [whiteView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.right.bottom.offset(0);
+    make.left.offset(0);
     make.top.offset(0);
-    make.center.equalTo(self.view).offset(0);
+    make.right.offset(0);
+    make.bottom.offset(0);
 }];
  
 */
@@ -27,48 +28,71 @@ whiteView.backgroundColor = UIColor.whiteColor;
 /*
 UIImageView * imageBGView = UIImageView.new;
 [self addSubview:imageBGView];
-imageBGView.cornerRadius = 5;
+imageBGView.cornerRadius = <#radius#>;
 imageBGView.layer.masksToBounds = true;
-imageBGView.backgroundColor = UIColor.whiteColor;
+imageBGView.backgroundColor = <#color#>;
 [imageBGView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.right.bottom.offset(0);
+    make.left.offset(0);
     make.top.offset(0);
-    make.center.equalTo(self.view).offset(0);
- }];
+    make.right.offset(0);
+    make.bottom.offset(0);
+}];
  */
 
 /// UILabel
 /*
 UILabel * titleLabel = UILabel.new;
 [whiteView addSubview:titleLabel];
-titleLabel.text = @"";
+titleLabel.text = <#text#>;
 titleLabel.textAlignment = NSTextAlignmentCenter;
-titleLabel.textColor = UIColor.redColor;
-titleLabel.font = PingFangSCRegularSize(14);;
+titleLabel.textColor = <#color#>;
+titleLabel.font = <#font#>;
 [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.right.bottom.offset(0);
+    make.left.offset(0);
     make.top.offset(0);
-    make.center.equalTo(self.view).offset(0);
- 
- }];
+    make.right.offset(0);
+    make.bottom.offset(0);
+}];
 */
 
 /// UIButton
 /*
 UIButton * sureButton = UIButton.new;
 [whiteView addSubview:sureButton];
-[sureButton setTitle:@"确定" forState:UIControlStateNormal];
-[sureButton addTarget:self action:@selector(sureClilck) forControlEvents:UIControlEventTouchUpInside];
-sureButton.cornerRadius = 5;
+[sureButton setTitle:<#text#> forState:UIControlStateNormal];
+[sureButton setTitleColor:<#color#> forState:UIControlStateNormal];
+[sureButton addTarget:self action:@selector(<#sel#>) forControlEvents:UIControlEventTouchUpInside];
+sureButton.cornerRadius = <#radius#>;
 sureButton.layer.masksToBounds = true;
-sureButton.titleLabel.font = PingFangSCRegularSize(14);
-sureButton.backgroundColor = UIColor.redColor;
+sureButton.titleLabel.font = <#font#>;
+sureButton.backgroundColor = <#color#>;
 [sureButton mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.right.bottom.offset(0);
+    make.left.offset(0);
     make.top.offset(0);
-    make.center.equalTo(self.view).offset(0);
+    make.right.offset(0);
+    make.bottom.offset(0);
 }];
 */
+
+/// UITextField
+/*
+UITextField * textField = UITextField.new;
+[searchView addSubview:textField];
+textField.placeholder = @"<#placeholder#>";
+textField.textColor = <#color#>;
+textField.font = <#font#>;
+textField.backgroundColor = <#color#>;
+// [textField becomeFirstResponder];
+[textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+[textField mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.offset(0);
+    make.top.offset(0);
+    make.right.offset(0);
+    make.bottom.offset(0);
+ }];
+- (void)textFieldChanged:(UITextField *)textField {}
+ 
+ */
 
 /// 懒加载
 /*
@@ -76,10 +100,21 @@ sureButton.backgroundColor = UIColor.redColor;
 
 - (UIButton *)deleteButton {
     if (!_deleteButton) {
-        _deleteButton = UIButton.new;
-        [self.view addSubview:_deleteButton];
-        [_deleteButton addTarget:self action:@selector(sureClilck) forControlEvents:UIControlEventTouchUpInside];
-        [_deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        UIButton * button = UIButton.new;
+        [self.view addSubview:button];
+        _deleteButton = button;
+        [button setTitle:<#text#> forState:UIControlStateNormal];
+        [button setTitleColor:<#color#> forState:UIControlStateNormal];
+        button.titleLabel.font = <#font#>;
+        button.backgroundColor = <#color#>;
+        [button addTarget:self action:@selector(<#sel#>) forControlEvents:UIControlEventTouchUpInside];
+        button.cornerRadius = <#radius#>;
+        button.layer.masksToBounds = true;
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.offset(0);
+            make.top.offset(0);
+            make.right.offset(0);
+            make.bottom.offset(0);
         }];
     }
     return _deleteButton;

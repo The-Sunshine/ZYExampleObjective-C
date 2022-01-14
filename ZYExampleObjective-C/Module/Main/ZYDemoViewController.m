@@ -40,7 +40,7 @@
     
     ZYMineViewController * vc = ZYMineViewController.new;
     vc.title = @"第二页";
-    [self zy_navigation_pushViewController:vc];
+    [self zy_present_overFullScreenViewController:vc];
 }
 
 - (void)dealloc {
