@@ -20,7 +20,7 @@ typedef enum
 }BHEnvironmentType;
 
 
-@interface BHContext : NSObject
+@interface BHContext : NSObject <NSCopying>
 
 //global env
 @property(nonatomic, assign) BHEnvironmentType env;
@@ -30,7 +30,8 @@ typedef enum
 
 //application appkey
 @property(nonatomic, strong) NSString *appkey;
-
+//customEvent>=1000
+@property(nonatomic, assign) NSInteger customEvent;
 
 @property(nonatomic, strong) UIApplication *application;
 
@@ -39,10 +40,6 @@ typedef enum
 @property(nonatomic, strong) NSString *moduleConfigName;
 
 @property(nonatomic, strong) NSString *serviceConfigName;
-
-@property(nonatomic, strong) NSMutableDictionary *modulesByName;
-
-@property(nonatomic, strong) NSMutableDictionary *servicesByName;
 
 //3D-Touch model
 #if __IPHONE_OS_VERSION_MAX_ALLOWED > 80400
@@ -58,7 +55,18 @@ typedef enum
 //user Activity Model
 @property (nonatomic, strong) BHUserActivityItem *userActivityItem;
 
-+(instancetype) shareInstance;
+//watch Model
+@property (nonatomic, strong) BHWatchItem *watchItem;
 
+//custom param
+@property (nonatomic, copy) NSDictionary *customParam;
+
++ (instancetype)shareInstance;
+
+- (void)addServiceWithImplInstance:(id)implInstance serviceName:(NSString *)serviceName;
+
+- (void)removeServiceWithServiceName:(NSString *)serviceName;
+
+- (id)getServiceInstanceFromServiceName:(NSString *)serviceName;
 
 @end
