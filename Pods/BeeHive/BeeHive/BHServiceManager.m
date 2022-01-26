@@ -8,15 +8,13 @@
 #import "BHServiceManager.h"
 #import "BHContext.h"
 #import "BHAnnotation.h"
-#import <objc/runtime.h>
-
 static const NSString *kService = @"service";
 static const NSString *kImpl = @"impl";
 
 @interface BHServiceManager()
 
-@property (nonatomic, strong) NSMutableDictionary *allServicesDict;
-@property (nonatomic, strong) NSRecursiveLock *lock;
+@property (nonatomic, strong) NSMutableArray *allServices;
+@property (nonatomic, strong) NSRecursiveLock *lock;
 
 @end
 
@@ -32,11 +30,19 @@ static const NSString *kImpl = @"impl";
     return sharedManager;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+    }
+    return self;
+}
+
 - (void)registerLocalServices
 {
-    NSString *serviceConfigName = [BHContext shareInstance].serviceConfigName;
+    NSString *serviceConfigName = self.wholeContext.serviceConfigName;
     
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:serviceConfigName ofType:@"plist"];
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:serviceConfigName  ofType:@"plist"];
     if (!plistPath) {
         return;
     }
@@ -44,14 +50,32 @@ static const NSString *kImpl = @"impl";
     NSArray *serviceList = [[NSArray alloc] initWithContentsOfFile:plistPath];
     
     [self.lock lock];
-    for (NSDictionary *dict in serviceList) {
-        NSString *protocolKey = [dict objectForKey:@"service"];
-        NSString *protocolImplClass = [dict objectForKey:@"impl"];
-        if (protocolKey.length > 0 && protocolImplClass.length > 0) {
-            [self.allServicesDict addEntriesFromDictionary:@{protocolKey:protocolImplClass}];
+    [self.allServices addObjectsFromArray:serviceList];
+    [self.lock unlock];
+}
+
+- (void)registerAnnotationServices
+{
+    NSArray<NSString *>*services = [BHAnnotation AnnotationServices];
+    
+    for (NSString *map in services) {
+        NSData *jsonData =  [map dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *error = nil;
+        id json = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+        if (!error) {
+            if ([json isKindOfClass:[NSDictionary class]] && [json allKeys].count) {
+                
+                NSString *protocol = [json allKeys][0];
+                NSString *clsName  = [json allValues][0];
+                
+                if (protocol && clsName) {
+                    [self registerService:NSProtocolFromString(protocol) implClass:NSClassFromString(clsName)];
+                }
+                
+            }
         }
     }
-    [self.lock unlock];
+
 }
 
 - (void)registerService:(Protocol *)service implClass:(Class)implClass
@@ -59,115 +83,91 @@ static const NSString *kImpl = @"impl";
     NSParameterAssert(service != nil);
     NSParameterAssert(implClass != nil);
     
-    if (![implClass conformsToProtocol:service]) {
-        if (self.enableException) {
-            @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"%@ module does not comply with %@ protocol", NSStringFromClass(implClass), NSStringFromProtocol(service)] userInfo:nil];
-        }
-        return;
+    if (![implClass conformsToProtocol:service] && self.enableException) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"%@ module does not comply with %@ protocol", NSStringFromClass(implClass), NSStringFromProtocol(service)] userInfo:nil];
     }
     
-    if ([self checkValidService:service]) {
-        if (self.enableException) {
-            @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"%@ protocol has been registed", NSStringFromProtocol(service)] userInfo:nil];
-        }
-        return;
+    if ([self checkValidService:service] && self.enableException) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"%@ protocol has been registed", NSStringFromProtocol(service)] userInfo:nil];
     }
     
-    NSString *key = NSStringFromProtocol(service);
-    NSString *value = NSStringFromClass(implClass);
+    NSMutableDictionary *serviceInfo = [NSMutableDictionary dictionary];
+    [serviceInfo setObject:NSStringFromProtocol(service) forKey:kService];
+    [serviceInfo setObject:NSStringFromClass(implClass) forKey:kImpl];
     
-    if (key.length > 0 && value.length > 0) {
-        [self.lock lock];
-        [self.allServicesDict addEntriesFromDictionary:@{key:value}];
-        [self.lock unlock];
-    }
-   
+    [self.lock lock];
+    [self.allServices addObject:serviceInfo];
+    [self.lock unlock];
 }
 
 - (id)createService:(Protocol *)service
 {
-    return [self createService:service withServiceName:nil];
-}
-
-- (id)createService:(Protocol *)service withServiceName:(NSString *)serviceName {
-    return [self createService:service withServiceName:serviceName shouldCache:YES];
-}
-
-- (id)createService:(Protocol *)service withServiceName:(NSString *)serviceName shouldCache:(BOOL)shouldCache {
-    if (!serviceName.length) {
-        serviceName = NSStringFromProtocol(service);
-    }
     id implInstance = nil;
     
-    if (![self checkValidService:service]) {
-        if (self.enableException) {
-            @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"%@ protocol does not been registed", NSStringFromProtocol(service)] userInfo:nil];
-        }
-        
-    }
-    
-    NSString *serviceStr = serviceName;
-    if (shouldCache) {
-        id protocolImpl = [[BHContext shareInstance] getServiceInstanceFromServiceName:serviceStr];
-        if (protocolImpl) {
-            return protocolImpl;
-        }
+    if (![self checkValidService:service] && self.enableException) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"%@ protocol does not been registed", NSStringFromProtocol(service)] userInfo:nil];
     }
     
     Class implClass = [self serviceImplClass:service];
-    if ([[implClass class] respondsToSelector:@selector(singleton)]) {
-        if ([[implClass class] singleton]) {
-            if ([[implClass class] respondsToSelector:@selector(shareInstance)])
-                implInstance = [[implClass class] shareInstance];
-            else
-                implInstance = [[implClass alloc] init];
-            if (shouldCache) {
-                [[BHContext shareInstance] addServiceWithImplInstance:implInstance serviceName:serviceStr];
-                return implInstance;
-            } else {
-                return implInstance;
-            }
-        }
+    
+    if ([[implClass class] respondsToSelector:@selector(shareInstance)])
+        implInstance = [[implClass class] shareInstance];
+    else
+        implInstance = [[implClass alloc] init];
+    
+    if (![implInstance respondsToSelector:@selector(singleton)]) {
+        return implInstance;
     }
-    return [[implClass alloc] init];
+    
+    NSString *serviceStr = NSStringFromProtocol(service);
+    
+    if ([implInstance singleton]) {
+        id protocol = [[BHContext shareInstance].servicesByName objectForKey:serviceStr];
+        
+        if (protocol) {
+            return protocol;
+        } else {
+            [[BHContext shareInstance].servicesByName setObject:implInstance forKey:serviceStr];
+        }
+        
+    } else {
+        [[BHContext shareInstance].servicesByName setObject:implInstance forKey:serviceStr];
+    }
+    
+    return implInstance;
 }
-
-- (id)getServiceInstanceFromServiceName:(NSString *)serviceName
-{
-    return [[BHContext shareInstance] getServiceInstanceFromServiceName:serviceName];
-}
-
-- (void)removeServiceWithServiceName:(NSString *)serviceName
-{
-    [[BHContext shareInstance] removeServiceWithServiceName:serviceName];
-}
-
 
 #pragma mark - private
 - (Class)serviceImplClass:(Protocol *)service
 {
-    NSString *serviceImpl = [[self servicesDict] objectForKey:NSStringFromProtocol(service)];
-    if (serviceImpl.length > 0) {
-        return NSClassFromString(serviceImpl);
+    for (NSDictionary *serviceInfo in [self servicesArray]) {
+        NSString *protocolStr = [serviceInfo objectForKey:kService];
+        if ([protocolStr isEqualToString:NSStringFromProtocol(service)]) {
+            NSString *classStr = [serviceInfo objectForKey:kImpl];
+            return NSClassFromString(classStr);
+        }
     }
+    
     return nil;
 }
 
 - (BOOL)checkValidService:(Protocol *)service
 {
-    NSString *serviceImpl = [[self servicesDict] objectForKey:NSStringFromProtocol(service)];
-    if (serviceImpl.length > 0) {
-        return YES;
+    for (NSDictionary *serviceInfo in [self servicesArray]) {
+        NSString *protocolStr = [serviceInfo objectForKey:kService];
+        if ([protocolStr isEqualToString:NSStringFromProtocol(service)]) {
+            return YES;
+        }
     }
     return NO;
 }
 
-- (NSMutableDictionary *)allServicesDict
+- (NSMutableArray *)allServices
 {
-    if (!_allServicesDict) {
-        _allServicesDict = [NSMutableDictionary dictionary];
+    if (!_allServices) {
+        _allServices = [NSMutableArray array];
     }
-    return _allServicesDict;
+    return _allServices;
 }
 
 - (NSRecursiveLock *)lock
@@ -178,13 +178,12 @@ static const NSString *kImpl = @"impl";
     return _lock;
 }
 
-- (NSDictionary *)servicesDict
+- (NSArray *)servicesArray
 {
     [self.lock lock];
-    NSDictionary *dict = [self.allServicesDict copy];
+    NSArray *array = [self.allServices mutableCopy];
     [self.lock unlock];
-    return dict;
+    return array;
 }
-
 
 @end

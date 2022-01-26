@@ -24,7 +24,7 @@ PODS:
     - AXNavigationBackItemInjection
     - AXPracticalHUD
     - NJKWebViewProgress
-  - BeeHive (1.6.0)
+  - BeeHive (1.1.1)
   - BlocksKit (2.2.5):
     - BlocksKit/All (= 2.2.5)
   - BlocksKit/All (2.2.5):
@@ -99,7 +99,7 @@ PODS:
   - LSTTimer (0.2.10)
   - Masonry (0.6.4)
   - MBProgressHUD (0.9.2)
-  - MJRefresh (3.7.5)
+  - MJRefresh (3.7.3)
   - MLeaksFinder (1.0.0):
     - FBRetainCycleDetector
   - MWPhotoBrowser (2.1.2):
@@ -253,7 +253,7 @@ SPEC CHECKSUMS:
   AXNavigationBackItemInjection: efe0446967f3cbcc85a9118decd1e145138912dd
   AXPracticalHUD: 821d170b31e050c426ef8754b07b4264a8b1d861
   AXWebViewController: 96566c473fce2806f4da696132b31777f5404c9f
-  BeeHive: 64c01ddec33b9ef8813701e075eeb732327d0f75
+  BeeHive: 81b697e94e1ae0993eccf5388e195f3fbfe707a6
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   CTMediator: f1cf58d509fb3192086c367711f039efd769b907
   CYLTabBarController: e7440ad0992edfb8ac14a6c793f43aa636c5cba5
@@ -280,7 +280,7 @@ SPEC CHECKSUMS:
   LSTTimer: caf8f02ff366ca175cf4c1778d26c166183c1b6f
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
+  MJRefresh: ec9c53ff4abf3a9237b4283862f1bd51c2ee3fdb
   MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
@@ -301,6 +301,6 @@ SPEC CHECKSUMS:
   ZWPlaceHolder: d55cce10c9930b48c31bf48e7f4748974a31f7e0
   ZWPullMenuView: dad96c2a9b0aa797145e255336047456cab3416c
 
-PODFILE CHECKSUM: 750211a19b27fefa649f2294f8ed267995d6d332
+PODFILE CHECKSUM: 7ca32badd62acdeff8c90dc102cf3c759bbdcd04
 
 COCOAPODS: 1.11.2

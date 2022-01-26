@@ -27,8 +27,6 @@
 - (id)createService:(Protocol *)proto;
 
 //Registration is recommended to use a static way
-- (void)registerService:(Protocol *)proto service:(Class) serviceClass;
+-(void)registerService:(Protocol *)proto service:(Class) serviceClass;
 
-+ (void)triggerCustomEvent:(NSInteger)eventType;
-    
 @end

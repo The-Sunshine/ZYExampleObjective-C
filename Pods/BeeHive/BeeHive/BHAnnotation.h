@@ -1,14 +1,12 @@
-/**
- * Created by BeeHive.
- * Copyright (c) 2016, Alibaba, Inc. All rights reserved.
- *
- * This source code is licensed under the GNU GENERAL PUBLIC LICENSE.
- * For the full copyright and license information,please view the LICENSE file in the root directory of this source tree.
- */
-
+//
+//  BHAnnotation.h
+//  Pods
+//
+//  Created by 寻峰 on 2016/11/5.
+//
+//
 
 #import <Foundation/Foundation.h>
-#import "BeeHive.h"
 
 #ifndef BeehiveModSectName
 
@@ -28,11 +26,14 @@
 
 
 #define BeeHiveMod(name) \
-class BeeHive; char * k##name##_mod BeeHiveDATA(BeehiveMods) = ""#name"";
+char * k##name##_mod BeeHiveDATA(BeehiveMods) = ""#name"";
 
 #define BeeHiveService(servicename,impl) \
-class BeeHive; char * k##servicename##_service BeeHiveDATA(BeehiveServices) = "{ \""#servicename"\" : \""#impl"\"}";
+char * k##servicename##_service BeeHiveDATA(BeehiveServices) = "{ \""#servicename"\" : \""#impl"\"}";
 
 @interface BHAnnotation : NSObject
+
++ (NSArray<NSString *> *)AnnotationModules;
++ (NSArray<NSString *> *)AnnotationServices;
 
 @end

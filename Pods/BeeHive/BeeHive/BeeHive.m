@@ -8,6 +8,14 @@
 
 #import "BeeHive.h"
 
+
+//BootLoader
+
+@interface BeeHive()
+
+@end
+
+
 @implementation BeeHive
 
 #pragma mark - public
@@ -36,16 +44,8 @@
 
 - (void)registerService:(Protocol *)proto service:(Class) serviceClass
 {
+
     [[BHServiceManager sharedManager] registerService:proto implClass:serviceClass];
-}
-    
-+ (void)triggerCustomEvent:(NSInteger)eventType
-{
-    if(eventType < 1000) {
-        return;
-    }
-    
-    [[BHModuleManager sharedManager] triggerEvent:eventType];
 }
 
 #pragma mark - Private
@@ -64,9 +64,12 @@
 
 - (void)loadStaticModules
 {
+    [[BHModuleManager sharedManager] setWholeContext:self.context];
     
     [[BHModuleManager sharedManager] loadLocalModules];
     
+    [[BHModuleManager sharedManager] registedAnnotationModules];
+
     [[BHModuleManager sharedManager] registedAllModules];
     
 }
@@ -75,7 +78,11 @@
 {
     [BHServiceManager sharedManager].enableException = self.enableException;
     
+    [[BHServiceManager sharedManager] setWholeContext:self.context];
+    
     [[BHServiceManager sharedManager] registerLocalServices];
+    
+    [[BHServiceManager sharedManager] registerAnnotationServices];
     
 }
 

@@ -81,9 +81,6 @@
 + (void)showVersionUpdateViewModel:(ZYVersionUpdateModel *)model
                         customView:(UIView *)customView {
 
-    if (ZYVersionUpdateManager.shared.popView) {
-        return;
-    }
     LSTPopView * popView = [LSTPopView initWithCustomView:customView
                                               parentView:nil
                                                 popStyle:LSTPopStyleFade
@@ -92,9 +89,9 @@
     popView.bgAlpha = 0.7;
     popView.popDuration = 0.8;
     popView.dismissDuration = 0.8;
-    popView.isClickFeedback = true;
-    popView.isHideBg = false;
-    popView.isObserverScreenRotation = true;
+    popView.isClickFeedback = YES;
+    popView.isHideBg = NO;
+    popView.isObserverScreenRotation = YES;
     popView.isClickBgDismiss = !model.force.boolValue;
     [popView pop];
     ZYVersionUpdateManager.shared.popView = popView;
@@ -102,7 +99,6 @@
 
 + (void)dismiss {
     [ZYVersionUpdateManager.shared.popView dismiss];
-    ZYVersionUpdateManager.shared.popView = nil;
 }
 
 + (void)versionUpdateUrl:(NSString *)urlString {

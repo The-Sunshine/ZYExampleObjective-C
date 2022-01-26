@@ -7,7 +7,6 @@
  */
 
 #import "BHWatchDog.h"
-#import "BHCommon.h"
 #import <UIKit/UIKit.h>
 
 typedef void (^handler)();
@@ -75,7 +74,7 @@ typedef void (^watchdogFiredCallBack)();
             //避免后台切换导致进入断言
             NSAssert([UIApplication sharedApplication].applicationState == UIApplicationStateBackground, message);
         } else {
-            BHLog(@"%@", message);
+            NSLog(message);
         }
     }];
 
@@ -85,7 +84,7 @@ typedef void (^watchdogFiredCallBack)();
 
 - (instancetype)initWIthThreshold:(double)threshold callBack:(watchdogFiredCallBack)callBack
 {
-    if (self = [self init]) {
+    if ([self init]) {
         self.threshold = 0.4;//默认间隔
         self.threshold = threshold;
         self.pingThread = [[PingThread alloc] initWithThreshold:threshold handler:callBack];

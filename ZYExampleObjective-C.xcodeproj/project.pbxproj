@@ -587,6 +587,7 @@
 		2276AE942754B1D1002ADDDC /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				22EECA15279BC97F0058726C /* New Group */,
 				22CFC4A727620641008AF986 /* SZKCleanCache */,
 				2244322C277355E700C0539A /* WHC_Debuger */,
 				22CFC3E92760AFEA008AF986 /* WHGradientHelper */,
@@ -790,6 +791,13 @@
 				22EEC984279403FB0058726C /* ZYVersionUpdateModel.m */,
 			);
 			path = ZYVersionUpdate;
+			sourceTree = "<group>";
+		};
+		22EECA15279BC97F0058726C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		22F3F16F2758EC9D00097DFB /* ZYButton */ = {
@@ -1325,6 +1333,8 @@
 					"-framework",
 					"\"JXCategoryView\"",
 					"-framework",
+					"\"KVOController\"",
+					"-framework",
 					"\"LSSafeProtector\"",
 					"-framework",
 					"\"LSTPopView\"",
@@ -1495,6 +1505,8 @@
 					"\"ImageIO\"",
 					"-framework",
 					"\"JXCategoryView\"",
+					"-framework",
+					"\"KVOController\"",
 					"-framework",
 					"\"LSSafeProtector\"",
 					"-framework",
