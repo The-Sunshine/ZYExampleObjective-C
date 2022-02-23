@@ -15,6 +15,7 @@
     tableView.dataSource = target;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, 0.1)];
+    tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, 0.1)];
     return tableView;
 }
 
